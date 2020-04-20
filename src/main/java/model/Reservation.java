@@ -8,13 +8,16 @@ import java.util.Date;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
+    @ManyToMany
     private Room room;
+    @ManyToMany
     private Guest guest;
     private Date date_from;
     private Date date_to;
     private String add_info;
+
 
 
     public Reservation() {
@@ -28,11 +31,11 @@ public class Reservation {
         this.add_info = add_info;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

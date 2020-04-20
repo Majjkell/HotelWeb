@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String first_name;
     private String last_name;
@@ -24,15 +25,16 @@ public class Guest {
     private String mail;
     private int phone;
     private String add_info;
-
-    private Password password;
+    private String password;
     private boolean verified;
+    @ManyToMany
+    private Reservation reservation;
 
 
     public Guest() {
     }
 
-    public Guest(String first_name, String last_name, Date date_of_birth, String mail, int phone, String add_info, Password password, boolean verified) {
+    public Guest(String first_name, String last_name, Date date_of_birth, String mail, int phone, String add_info, String password, boolean verified) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
@@ -67,11 +69,11 @@ public class Guest {
         this.date_of_birth = date_of_birth;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -99,11 +101,11 @@ public class Guest {
         this.add_info = add_info;
     }
 
-    public Password getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Password password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -127,6 +129,18 @@ public class Guest {
                 ", add_info='" + add_info + '\'' +
                 ", password=" + password +
                 ", verified=" + verified +
+                ", reservation=" + reservation +
                 '}';
+    }
+
+    @ManyToMany(mappedBy = "guest")
+    private Collection<Reservation> reservations;
+
+    public Collection<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Collection<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

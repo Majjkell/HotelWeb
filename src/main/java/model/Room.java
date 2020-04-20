@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private int num_of_ppl;
     private double price;
@@ -29,11 +29,11 @@ public class Room {
         this.conference_room = conference_room;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
