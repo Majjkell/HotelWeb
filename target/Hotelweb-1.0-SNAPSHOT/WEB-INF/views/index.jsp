@@ -2,8 +2,27 @@
 <html>
   <head>
     <title>Title</title>
+    <style>
+      a{
+        color: royalblue;
+        text-decoration: none;
+      }
+    </style>
   </head>
   <body>
-   <p>index</p>
+  <section>
+    <nav>
+      <a href="#">Pokoj i Apartamenty</a>
+      <a href="#">Usługi</a>
+      <a href="#">Lokalizacja</a>
+      <a href="#">Restauracje</a>
+      <a href="#">Sale Konferencyjne</a>
+      <a href="/register">Rejestracja</a>
+      <a href="#">Galeria</a>
+      <a href="#">Zmiana Jezyka</a>
+    </nav>
+  </section>
+   <p>Strong główna</p>
   </body>
+
 </html>

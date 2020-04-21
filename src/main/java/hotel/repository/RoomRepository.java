@@ -1,6 +1,6 @@
-package repository;
+package hotel.repository;
 
-import model.Room;
+import hotel.model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoomRepository extends JpaRepository<Room,Long> {

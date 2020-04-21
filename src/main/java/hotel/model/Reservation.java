@@ -1,7 +1,8 @@
-package model;
+package hotel.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "reservation")
@@ -11,9 +12,9 @@ public class Reservation {
     private Long id;
 
     @ManyToMany
-    private Room room;
+    private Set<Room> room;
     @ManyToMany
-    private Guest guest;
+    private Set<Guest> guest;
     private Date date_from;
     private Date date_to;
     private String add_info;
@@ -23,13 +24,8 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Room room, Guest guest, Date date_from, Date date_to, String add_info) {
-        this.room = room;
-        this.guest = guest;
-        this.date_from = date_from;
-        this.date_to = date_to;
-        this.add_info = add_info;
-    }
+
+
 
     public Long getId() {
         return id;
@@ -40,19 +36,19 @@ public class Reservation {
     }
 
     public Room getRoom() {
-        return room;
+        return (Room) room;
     }
 
     public void setRoom(Room room) {
-        this.room = room;
+        this.room = (Set<Room>) room;
     }
 
     public Guest getGuest() {
-        return guest;
+        return (Guest) guest;
     }
 
     public void setGuest(Guest guest) {
-        this.guest = guest;
+        this.guest = (Set<Guest>) guest;
     }
 
     public Date getDate_from() {

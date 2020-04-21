@@ -1,34 +1,50 @@
-package model;
+package hotel.model;
 
-import sun.security.util.Password;
+
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "guest")
+@Table(name = "guests")
 public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String first_name;
+
+    @NotNull
     private String last_name;
-    @Size(min = 9,max = 9)
+
+
     private Date date_of_birth;
+
+    @NotNull
     @Email
     private String mail;
+
+    @NotNull
     private int phone;
+
     private String add_info;
+
+    @NotNull
     private String password;
+
+    @NotNull
     private boolean verified;
-    @ManyToMany
-    private Reservation reservation;
+
+    @ManyToMany(mappedBy = "guest",fetch = FetchType.EAGER)
+    private Set<Reservation> reservation;
+
+    @Size(max = 1)
+    private int online;
 
 
     public Guest() {
@@ -43,6 +59,22 @@ public class Guest {
         this.add_info = add_info;
         this.password = password;
         this.verified = verified;
+    }
+
+    public Set<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Set<Reservation> reservation) {
+        this.reservation = reservation;
+    }
+
+    public int getOnline() {
+        return online;
+    }
+
+    public void setOnline(int online) {
+        this.online = online;
     }
 
     public String getFirst_name() {
@@ -133,14 +165,4 @@ public class Guest {
                 '}';
     }
 
-    @ManyToMany(mappedBy = "guest")
-    private Collection<Reservation> reservations;
-
-    public Collection<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(Collection<Reservation> reservations) {
-        this.reservations = reservations;
-    }
 }
