@@ -16,17 +16,37 @@ public class Room {
     private int rating;
     private int number;
     private boolean conference_room;
+    private String add_info;
+    private String type;
 
 
     public Room() {
     }
 
-    public Room(int num_of_ppl, double price, int rating, int number, boolean conference_room) {
+    public Room(int num_of_ppl, double price, int rating, int number, boolean conference_room, String add_info, String type) {
         this.num_of_ppl = num_of_ppl;
         this.price = price;
         this.rating = rating;
         this.number = number;
         this.conference_room = conference_room;
+        this.add_info = add_info;
+        this.type = type;
+    }
+
+    public String getAdd_info() {
+        return add_info;
+    }
+
+    public void setAdd_info(String add_info) {
+        this.add_info = add_info;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Long getId() {

@@ -18,20 +18,20 @@ public class GuestController {
     private GuestRepository guestRepository;
 
     @Autowired
-    private GuestController (GuestRepository guestRepository){
+    private GuestController(GuestRepository guestRepository) {
         this.guestRepository = guestRepository;
     }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         Guest guest = new Guest();
-        model.addAttribute("guest",guest);
+        model.addAttribute("guest", guest);
         return "register";
     }
 
 
     @RequestMapping(path = "/register", method = RequestMethod.POST)
-    public String saveregister(Guest guest){
+    public String saveregister(Guest guest) {
         guestRepository.save(guest);
         return "index";
     }
