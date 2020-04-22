@@ -1,11 +1,13 @@
 package hotel.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "reservation")
+@Table(name = "reservations")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,17 +17,41 @@ public class Reservation {
     private Set<Room> room;
     @ManyToMany
     private Set<Guest> guest;
+    private int num_of_ppl;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_from;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_to;
     private String add_info;
-
+    private String room_type;
 
 
     public Reservation() {
     }
 
+    public int getNum_of_ppl() {
+        return num_of_ppl;
+    }
 
+    public void setNum_of_ppl(int num_of_ppl) {
+        this.num_of_ppl = num_of_ppl;
+    }
 
+    public void setRoom(Set<Room> room) {
+        this.room = room;
+    }
+
+    public void setGuest(Set<Guest> guest) {
+        this.guest = guest;
+    }
+
+    public String getRoom_type() {
+        return room_type;
+    }
+
+    public void setRoom_type(String room_type) {
+        this.room_type = room_type;
+    }
 
     public Long getId() {
         return id;

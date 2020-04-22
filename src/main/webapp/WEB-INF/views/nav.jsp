@@ -2,17 +2,13 @@
 <html>
 <head>
     <title>Title</title>
-    <style>
-        a{
-            color: royalblue;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <section>
     <nav>
-        <a href="#">Pokoj i Apartamenty</a>
+        <a href="/">Strona glowna</a>
+        <a href="/rooms">Pokoj i Apartamenty</a>
         <a href="#">Usługi</a>
         <a href="#">Lokalizacja</a>
         <a href="#">Restauracje</a>

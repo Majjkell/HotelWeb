@@ -1,11 +1,9 @@
 package hotel.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "rooms")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,19 +16,20 @@ public class Room {
     private boolean conference_room;
     private String add_info;
     private String type;
+    private boolean busy;
 
 
     public Room() {
     }
 
-    public Room(int num_of_ppl, double price, int rating, int number, boolean conference_room, String add_info, String type) {
-        this.num_of_ppl = num_of_ppl;
-        this.price = price;
-        this.rating = rating;
-        this.number = number;
-        this.conference_room = conference_room;
-        this.add_info = add_info;
-        this.type = type;
+
+
+    public boolean isBusy() {
+        return busy;
+    }
+
+    public void setBusy(boolean busy) {
+        this.busy = busy;
     }
 
     public String getAdd_info() {

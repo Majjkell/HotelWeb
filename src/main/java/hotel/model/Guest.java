@@ -2,8 +2,11 @@ package hotel.model;
 
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -18,8 +21,8 @@ public class Guest {
 
     private String last_name;
 
-
-    private String date_of_birth;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date_of_birth;
 
 
     private String mail;
@@ -42,7 +45,7 @@ public class Guest {
     public Guest() {
     }
 
-    public Guest(String first_name, String last_name, String date_of_birth, String mail, int phone, String add_info, String password, boolean verified) {
+    public Guest(String first_name, String last_name, Date date_of_birth, String mail, int phone, String add_info, String password, boolean verified) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
@@ -85,11 +88,11 @@ public class Guest {
         this.last_name = last_name;
     }
 
-    public String getDate_of_birth() {
+    public Date getDate_of_birth() {
         return date_of_birth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
+    public void setDate_of_birth(Date date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 

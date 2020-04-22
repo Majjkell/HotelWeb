@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: royalblue;
+    text-decoration: none;
+}
+section{
+    height: 20vh;
+}
+.s1{
+    height: 20vh;
+    width: 100vw;
+    color: mediumblue;
+    background-color: aqua;
+}
+.s2{
+    height: 80vh;
+    width: 60vw;
+    color: black;
+    background-color: green;
+}
+p{
+    color: hotpink;
+}

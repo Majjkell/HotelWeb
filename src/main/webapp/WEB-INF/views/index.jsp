@@ -2,11 +2,7 @@
 <html>
   <head>
     <title>Title</title>
-    <style>
-      p{
-        color: hotpink;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
   <%@ include file="nav.jsp" %>
