@@ -7,6 +7,9 @@
         color: royalblue;
         text-decoration: none;
       }
+      p{
+        color: hotpink;
+      }
     </style>
   </head>
   <body>

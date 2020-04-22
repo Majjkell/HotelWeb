@@ -4,8 +4,6 @@ package hotel.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.util.Collection;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -16,41 +14,35 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     private String first_name;
 
-    @NotNull
     private String last_name;
 
 
-    private Date date_of_birth;
+    private String date_of_birth;
 
-    @NotNull
-    @Email
+
     private String mail;
 
-    @NotNull
     private int phone;
 
     private String add_info;
 
-    @NotNull
     private String password;
 
-    @NotNull
     private boolean verified;
 
     @ManyToMany(mappedBy = "guest",fetch = FetchType.EAGER)
     private Set<Reservation> reservation;
 
-    @Size(max = 1)
+    @Max(1)
     private int online;
 
 
     public Guest() {
     }
 
-    public Guest(String first_name, String last_name, Date date_of_birth, String mail, int phone, String add_info, String password, boolean verified) {
+    public Guest(String first_name, String last_name, String date_of_birth, String mail, int phone, String add_info, String password, boolean verified) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.date_of_birth = date_of_birth;
@@ -93,11 +85,11 @@ public class Guest {
         this.last_name = last_name;
     }
 
-    public Date getDate_of_birth() {
+    public String getDate_of_birth() {
         return date_of_birth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
+    public void setDate_of_birth(String date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 

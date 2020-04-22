@@ -1,0 +1,3 @@
+INSERT INTO guests(add_info, date_of_birth, first_name, last_name, mail, online, password, phone, verified) VALUES ('Choroba lokomocyjna','05-05-2000','Adam','Mada','Adam@Mada.com',0,'password',123456789,true)
+INSERT INTO guests(add_info, date_of_birth, first_name, last_name, mail, online, password, phone, verified) VALUES ('corona','06-06-1960','Jan','Kata','Jan@Kata.com',0,'password1',112345678,true)
+INSERT INTO guests(add_info, date_of_birth, first_name, last_name, mail, online, password, phone, verified) VALUES ('virus','07-07-1989','Kalmil','Lama','Kalmil@Lama.com',0,'password2',122345678,true)

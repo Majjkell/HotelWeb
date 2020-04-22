@@ -32,8 +32,7 @@ public class GuestController {
 
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public String saveregister(Guest guest){
-        //
         guestRepository.save(guest);
-        return "";
+        return "index";
     }
 }
