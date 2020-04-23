@@ -3,14 +3,14 @@
     padding: 0;
 }
 a{
-    color: royalblue;
+    color: yellow;
     text-decoration: none;
 }
 section{
-    height: 20vh;
+    height: 24vh;
 }
 .s1{
-    height: 20vh;
+    height: 9vh;
     width: 100vw;
     color: mediumblue;
     background-color: aqua;
@@ -22,5 +22,9 @@ section{
     background-color: green;
 }
 p{
-    color: hotpink;
+    color: black;
+}
+
+.rp{
+    color: red;
 }

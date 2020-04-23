@@ -1,6 +1,6 @@
 INSERT INTO guests(add_info, date_of_birth, first_name, last_name, mail, online, password, phone, verified) VALUES ('Choroba lokomocyjna','2000-05-05','Adam','Mada','Adam@Mada.com',0,'password',123456789,true)
 INSERT INTO guests(add_info, date_of_birth, first_name, last_name, mail, online, password, phone, verified) VALUES ('corona','1960-06-06','Jan','Kata','Jan@Kata.com',0,'password1',112345678,true)
-INSERT INTO guests(add_info, date_of_birth, first_name, last_name, mail, online, password, phone, verified) VALUES ('virus','1989-07-07','Kalmil','Lama','Kalmil@Lama.com',0,'password2',122345678,true)
+INSERT INTO guests(add_info, date_of_birth, first_name, last_name, mail, online, password, phone, verified) VALUES ('virus','1989-07-07','Kalmil','Lama','Kalmil@Lama.com',1,'password2',122345678,true)
 INSERT INTO rooms(add_info, conference_room, num_of_ppl, number, price, rating, type_room) VALUES ('przestrzenny', true ,2,1,255*2,10,'Comfort')
 INSERT INTO rooms(add_info, conference_room, num_of_ppl, number, price, rating, type_room) VALUES ('przestrzenny', false ,3,2,255,10,'classic')
 INSERT INTO rooms(add_info, conference_room, num_of_ppl, number, price, rating, type_room) VALUES ('przestrzenny', true ,4,3,255*4,10,'premium')

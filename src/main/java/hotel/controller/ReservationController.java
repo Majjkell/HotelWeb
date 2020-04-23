@@ -9,6 +9,7 @@ import hotel.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -58,14 +59,35 @@ public class ReservationController {
         return "rooms";
     }
 
-    @RequestMapping("/reservation/{r.number}")
+    @RequestMapping(value = "/reservation/{number}")
     public String reserv(@PathVariable int number,HttpSession httpSession){
+//        int number1 = Integer.parseInt(number);
         Room room = roomRepository.findRoomByNumber(number);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
+        System.out.println(reservation.toString());
         Guest guest = guestRepository.findByOnline(1);
+        System.out.println(reservation.toString());
+
+        //busy polaczenie z room
+        Busy busy = new Busy();
+        busy.setDate_from(reservation.getDate_from());
+        busy.setDate_to(reservation.getDate_to());
+        busy.setRoom(room);
+        List<Busy> busies = room.getBusies();
+        busies.add(busy);
+        room.setBusies(busies);
+
         reservation.setGuest(guest);
+        reservation.setRoom(room);
+        System.out.println(reservation.toString());
+
         return "reservation";
     }
+    @GetMapping("/submit")
+    public String submit(){
+        return "index";
+    }
+
 }
 
 

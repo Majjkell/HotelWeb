@@ -2,20 +2,46 @@
 <html>
 <head>
     <title>Nav</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 <section>
-    <nav>
-        <a href="/">Strona glowna</a>
-        <a href="/rooms">Pokoj i Apartamenty</a>
-        <a href="#">Usługi</a>
-        <a href="#">Lokalizacja</a>
-        <a href="#">Restauracje</a>
-        <a href="#">Sale Konferencyjne</a>
-        <a href="/register">Rejestracja</a>
-        <a href="#">Galeria</a>
-        <a href="#">Zmiana Jezyka</a>
+    <nav class="navbar navbar-dark bg-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a href="/">Strona glowna</a>
+            </li>
+            <li class="nav-item">
+                <a href="/rooms">Pokoj i Apartamenty</a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Usługi</a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Lokalizacja</a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Restauracje</a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Sale Konferencyjne</a>
+            </li>
+            <li class="nav-item">
+                <a href="/register">Rejestracja</a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Galeria</a>
+            </li>
+            <li class="nav-item">
+                <a href="#">Zmiana Jezyka</a>
+            </li>
+        </ul>
     </nav>
 </section>
 </body>

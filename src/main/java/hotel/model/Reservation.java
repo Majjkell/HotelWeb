@@ -24,20 +24,20 @@ public class Reservation {
     private Date date_to;
     private String add_info;
     private String room_type;
-    @OneToOne
-    private Busy busy;
+//    @OneToOne
+//    private Busy busy;
 
 
     public Reservation() {
     }
 
-    public Busy getBusy() {
-        return busy;
-    }
+//    public Busy getBusy() {
+//        return busy;
+//    }
 
-    public void setBusy(Busy busy) {
-        this.busy = busy;
-    }
+//    public void setBusy(Busy busy) {
+//        this.busy = busy;
+//    }
 
     public int getNum_of_ppl() {
         return num_of_ppl;
@@ -117,9 +117,11 @@ public class Reservation {
                 "id=" + id +
                 ", room=" + room +
                 ", guest=" + guest +
+                ", num_of_ppl=" + num_of_ppl +
                 ", date_from=" + date_from +
                 ", date_to=" + date_to +
                 ", add_info='" + add_info + '\'' +
+                ", room_type='" + room_type + '\'' +
                 '}';
     }
 }
