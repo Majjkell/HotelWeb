@@ -5,6 +5,7 @@ import hotel.model.Guest;
 import hotel.model.Reservation;
 import hotel.model.Room;
 import hotel.repository.GuestRepository;
+import hotel.repository.ReservationRepository;
 import hotel.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +24,13 @@ import java.util.List;
 public class ReservationController {
     private final RoomRepository roomRepository;
     private final GuestRepository guestRepository;
+    private final ReservationRepository reservationRepository;
 
     @Autowired
-    public ReservationController(RoomRepository roomRepository,GuestRepository guestRepository) {
+    public ReservationController(RoomRepository roomRepository,GuestRepository guestRepository, ReservationRepository reservationRepository) {
         this.roomRepository = roomRepository;
         this.guestRepository = guestRepository;
+        this.reservationRepository = reservationRepository;
     }
 
 
@@ -64,9 +67,7 @@ public class ReservationController {
 //        int number1 = Integer.parseInt(number);
         Room room = roomRepository.findRoomByNumber(number);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
-        System.out.println(reservation.toString());
         Guest guest = guestRepository.findByOnline(1);
-        System.out.println(reservation.toString());
 
         //busy polaczenie z room
         Busy busy = new Busy();
@@ -84,7 +85,10 @@ public class ReservationController {
         return "reservation";
     }
     @GetMapping("/submit")
-    public String submit(){
+    public String submit(HttpSession httpSession){
+        Reservation reservation =(Reservation) httpSession.getAttribute("reservation");
+//        reservation.setAdd_info(add_info);
+        reservationRepository.save(reservation);
         return "index";
     }
 
