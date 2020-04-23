@@ -68,7 +68,7 @@ public class ReservationController {
     @RequestMapping(value = "/reservation/{number}")
     public String reserv(@PathVariable int number,HttpSession httpSession){
 //        int number1 = Integer.parseInt(number);
-        Room room = roomRepository.findFirstRoomByNumber(number);
+        Room room = roomRepository.findFirstRoomByNumber_of_room(number);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
         Guest guest = guestRepository.findFirstByOnline(1);
 
