@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GuestRepository extends JpaRepository<Guest,Long> {
-
+    Guest findByOnline(int on);
 }

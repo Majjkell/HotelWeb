@@ -18,8 +18,8 @@ public class Room {
     private int number;
     private boolean conference_room;
     private String add_info;
-    private String type;
-    @OneToMany
+    private String type_room;
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Busy> busies = new ArrayList<>();
 
 
@@ -44,12 +44,12 @@ public class Room {
         this.add_info = add_info;
     }
 
-    public String getType() {
-        return type;
+    public String getType_room() {
+        return type_room;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType_room(String type_room) {
+        this.type_room = type_room;
     }
 
     public Long getId() {
@@ -109,6 +109,9 @@ public class Room {
                 ", rating=" + rating +
                 ", number=" + number +
                 ", conference_room=" + conference_room +
+                ", add_info='" + add_info + '\'' +
+                ", type_room='" + type_room + '\'' +
+                ", busies=" + busies +
                 '}';
     }
 }

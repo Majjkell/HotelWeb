@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Pokoje</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,6 +21,13 @@
 
 
 </section>
-<section class="s2">Przykladowy typ pokoju z 'add_info' i zdj losowym dla danego typu      X Ilosc typow</section>
+<%--    <c:forEach items="${rooms1}" var="rt">--%>
+<%--        <section class="s2">--%>
+<%--        <p class="num_of_ppl_t">Liczba osob: 2-4</p>--%>
+<%--        <p class="type_room_t">Typ Pokoju: <c:out value="${rt.add_info}"/></p>--%>
+<%--        <p class="price_t">Cena Pokoju Od: <c:out value="${rt.price}"/></p>--%>
+<%--        </section>--%>
+<%--    </c:forEach>--%>
+<%@ include file="pokoje_dostepne.jsp" %>
 </body>
 </html>

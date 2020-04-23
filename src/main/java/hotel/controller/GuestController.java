@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 @Controller
 public class GuestController {
     private final Logger logger = LoggerFactory.getLogger(GuestController.class);
-    private GuestRepository guestRepository;
+    private final GuestRepository guestRepository;
 
     @Autowired
     private GuestController(GuestRepository guestRepository) {

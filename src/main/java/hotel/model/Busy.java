@@ -11,7 +11,7 @@ public class Busy {
     private Long id;
     private Date date_from;
     private Date date_to;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Room room;
 
     public Date getDate_from() {
