@@ -24,9 +24,19 @@ public class Reservation {
     private Date date_to;
     private String add_info;
     private String room_type;
+    @OneToOne
+    private Busy busy;
 
 
     public Reservation() {
+    }
+
+    public Busy getBusy() {
+        return busy;
+    }
+
+    public void setBusy(Busy busy) {
+        this.busy = busy;
     }
 
     public int getNum_of_ppl() {

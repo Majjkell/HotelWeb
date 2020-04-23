@@ -20,7 +20,7 @@
     <form:hidden path="online" />
     <input type="submit" value="Submit">
 </form:form>
-<p>UWAGA COFA DO STRONY GLUWNEJ</p>
+<p>UWAGA COFA DO STRONY GLOWNEJ</p>
 
 </body>
 </html>

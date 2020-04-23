@@ -1,6 +1,9 @@
 package hotel.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "rooms")
@@ -16,20 +19,21 @@ public class Room {
     private boolean conference_room;
     private String add_info;
     private String type;
-    private boolean busy;
+    @OneToMany
+    private List<Busy> busies = new ArrayList<>();
+
 
 
     public Room() {
     }
 
 
-
-    public boolean isBusy() {
-        return busy;
+    public List<Busy> getBusies() {
+        return busies;
     }
 
-    public void setBusy(boolean busy) {
-        this.busy = busy;
+    public void setBusies(List<Busy> busies) {
+        this.busies = busies;
     }
 
     public String getAdd_info() {

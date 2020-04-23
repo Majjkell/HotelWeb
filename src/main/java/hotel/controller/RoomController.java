@@ -1,7 +1,6 @@
 package hotel.controller;
 
 import hotel.model.Reservation;
-import hotel.model.Room_Type;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
