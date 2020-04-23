@@ -4,6 +4,7 @@ import hotel.model.Busy;
 import hotel.model.Guest;
 import hotel.model.Reservation;
 import hotel.model.Room;
+import hotel.repository.BusyRepsository;
 import hotel.repository.GuestRepository;
 import hotel.repository.ReservationRepository;
 import hotel.repository.RoomRepository;
@@ -25,12 +26,14 @@ public class ReservationController {
     private final RoomRepository roomRepository;
     private final GuestRepository guestRepository;
     private final ReservationRepository reservationRepository;
+    private final BusyRepsository busyRepsository;
 
     @Autowired
-    public ReservationController(RoomRepository roomRepository,GuestRepository guestRepository, ReservationRepository reservationRepository) {
+    public ReservationController(RoomRepository roomRepository,GuestRepository guestRepository, ReservationRepository reservationRepository, BusyRepsository busyRepsository) {
         this.roomRepository = roomRepository;
         this.guestRepository = guestRepository;
         this.reservationRepository = reservationRepository;
+        this.busyRepsository = busyRepsository;
     }
 
 
@@ -65,9 +68,9 @@ public class ReservationController {
     @RequestMapping(value = "/reservation/{number}")
     public String reserv(@PathVariable int number,HttpSession httpSession){
 //        int number1 = Integer.parseInt(number);
-        Room room = roomRepository.findRoomByNumber(number);
+        Room room = roomRepository.findFirstRoomByNumber(number);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
-        Guest guest = guestRepository.findByOnline(1);
+        Guest guest = guestRepository.findFirstByOnline(1);
 
         //busy polaczenie z room
         Busy busy = new Busy();
@@ -78,17 +81,30 @@ public class ReservationController {
         busies.add(busy);
         room.setBusies(busies);
 
+        List<Reservation> reservations = guest.getReservation();
+        reservations.add(reservation);
+
         reservation.setGuest(guest);
         reservation.setRoom(room);
         System.out.println(reservation.toString());
-
+        httpSession.setAttribute("reservation",reservation);
+        httpSession.setAttribute("busy",busy);
+        httpSession.setAttribute("room",room);
+        httpSession.setAttribute("guest",guest);
         return "reservation";
     }
     @GetMapping("/submit")
     public String submit(HttpSession httpSession){
         Reservation reservation =(Reservation) httpSession.getAttribute("reservation");
 //        reservation.setAdd_info(add_info);
+        Guest guest = (Guest) httpSession.getAttribute("guest");
+        Busy busy = (Busy) httpSession.getAttribute("busy");
+        Room room = (Room) httpSession.getAttribute("room");
         reservationRepository.save(reservation);
+        busyRepsository.save(busy);
+        roomRepository.save(room);
+        guestRepository.save(guest);
+
         return "index";
     }
 

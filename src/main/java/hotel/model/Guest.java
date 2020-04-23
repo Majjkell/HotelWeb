@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,7 +37,7 @@ public class Guest {
     private boolean verified;
 
     @ManyToMany(mappedBy = "guest",fetch = FetchType.EAGER)
-    private Set<Reservation> reservation;
+    private List<Reservation> reservation;
 
     @Max(1)
     private int online;
@@ -56,11 +57,11 @@ public class Guest {
         this.verified = verified;
     }
 
-    public Set<Reservation> getReservation() {
+    public List<Reservation> getReservation() {
         return reservation;
     }
 
-    public void setReservation(Set<Reservation> reservation) {
+    public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
     }
 

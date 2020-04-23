@@ -20,6 +20,6 @@ public interface RoomRepository extends JpaRepository<Room,Long> {
     @Query(value = "SELECT r FROM Room AS r WHERE r.type_room =: test")
     List<Room> findRoomsByType_room(@Param("test")String test);
 
-    Room findRoomByNumber(int number);
+    Room findFirstRoomByNumber(int number);
 
 }

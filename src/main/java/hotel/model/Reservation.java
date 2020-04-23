@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,10 +14,10 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne
+    private Room room;
     @ManyToMany
-    private Set<Room> room;
-    @ManyToMany
-    private Set<Guest> guest;
+    private List<Guest> guest;
     private int num_of_ppl;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_from;
@@ -48,11 +49,11 @@ public class Reservation {
     }
 
     public void setRoom(Set<Room> room) {
-        this.room = room;
+        this.room = (Room) room;
     }
 
     public void setGuest(Set<Guest> guest) {
-        this.guest = guest;
+        this.guest = (List<Guest>) guest;
     }
 
     public String getRoom_type() {
@@ -76,7 +77,7 @@ public class Reservation {
     }
 
     public void setRoom(Room room) {
-        this.room = (Set<Room>) room;
+        this.room = (Room) room;
     }
 
     public Guest getGuest() {
@@ -84,7 +85,7 @@ public class Reservation {
     }
 
     public void setGuest(Guest guest) {
-        this.guest = (Set<Guest>) guest;
+        this.guest = (List<Guest>) guest;
     }
 
     public Date getDate_from() {
