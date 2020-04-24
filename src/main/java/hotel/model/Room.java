@@ -14,7 +14,7 @@ public class Room {
     private int num_of_ppl;
     private double price;
     private int rating;
-    private int number_of_room;
+    private int numberOfRoom;
     private boolean conference_room;
     private String add_info;
     private String type_room;
@@ -83,12 +83,12 @@ public class Room {
         this.rating = rating;
     }
 
-    public int getNumber_of_room() {
-        return number_of_room;
+    public int getNumberOfRoom() {
+        return numberOfRoom;
     }
 
-    public void setNumber_of_room(int number) {
-        this.number_of_room = number;
+    public void setNumberOfRoom(int number) {
+        this.numberOfRoom = number;
     }
 
     public boolean isConference_room() {
@@ -106,7 +106,7 @@ public class Room {
                 ", num_of_ppl=" + num_of_ppl +
                 ", price=" + price +
                 ", rating=" + rating +
-                ", number=" + number_of_room +
+                ", number=" + numberOfRoom +
                 ", conference_room=" + conference_room +
                 ", add_info='" + add_info + '\'' +
                 ", type_room='" + type_room + '\'' +

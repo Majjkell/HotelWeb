@@ -80,12 +80,12 @@ public class Reservation {
         this.room = (Room) room;
     }
 
-    public Guest getGuest() {
-        return (Guest) guest;
+    public List<Guest> getGuest() {
+        return guest;
     }
 
-    public void setGuest(Guest guest) {
-        this.guest = (List<Guest>) guest;
+    public void setGuest(List<Guest> guest) {
+        this.guest = guest;
     }
 
     public Date getDate_from() {
@@ -117,7 +117,6 @@ public class Reservation {
         return "Reservation{" +
                 "id=" + id +
                 ", room=" + room +
-                ", guest=" + guest +
                 ", num_of_ppl=" + num_of_ppl +
                 ", date_from=" + date_from +
                 ", date_to=" + date_to +

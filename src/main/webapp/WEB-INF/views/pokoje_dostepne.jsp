@@ -14,11 +14,11 @@
             Liczba osob: <c:out value="${r.num_of_ppl}"/> <br>
             Cena: <c:out value="${r.price}"/><br>
             Ocena Gosci: <c:out value="${r.rating}"/><br>
-            Nr Pokoju: <C:out value="${r.number_of_room}"/><br>
+            Nr Pokoju: <C:out value="${r.numberOfRoom}"/><br>
             Pokoj konferencyjny: <c:out value="${r.conference_room}"/><br>
             Typ pokoju: <c:out value="${r.type_room}"/><br>
             Dodatkowe informacje: <c:out value="${r.add_info}"/><br>
-            <a href="/reservation/${r.number_of_room}" class="rp">Rezerwuj</a>
+            <a href="/reservation/${r.numberOfRoom}" class="rp">Rezerwuj</a>
         </section>
     </c:forEach>
 </body>

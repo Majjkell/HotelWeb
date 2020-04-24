@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class ReservationController {
@@ -68,7 +69,7 @@ public class ReservationController {
     @RequestMapping(value = "/reservation/{number}")
     public String reserv(@PathVariable int number,HttpSession httpSession){
 //        int number1 = Integer.parseInt(number);
-        Room room = roomRepository.findFirstRoomByNumber_of_room(number);
+        Room room = roomRepository.findFirstByNumberOfRoom(number);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
         Guest guest = guestRepository.findFirstByOnline(1);
 
@@ -84,7 +85,12 @@ public class ReservationController {
         List<Reservation> reservations = guest.getReservation();
         reservations.add(reservation);
 
-        reservation.setGuest(guest);
+        List<Guest> guests = reservation.getGuest();
+        if(guests==null){
+            guests = new ArrayList<>();
+        }
+        guests.add(guest);
+        reservation.setGuest(guests);
         reservation.setRoom(room);
         System.out.println(reservation.toString());
         httpSession.setAttribute("reservation",reservation);

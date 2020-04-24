@@ -9,7 +9,7 @@
 </head>
 <body>
     <p> DANE DOTYCZACE REZERWACJI</p>
-    Nr pokoju<c:out value="${reservation.room.number_of_room}"/>
+    Nr pokoju<c:out value="${reservation.room.numberOfRoom}"/>
     Liczba osob: <c:out value="${reservation.num_of_ppl}"/>
     Od kiedy: <c:out value="${reservation.date_from}"/>
     Do Kiedy: <c:out value="${reservation.date_to}"/>

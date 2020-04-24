@@ -155,10 +155,10 @@ public class Guest {
                 ", mail='" + mail + '\'' +
                 ", phone=" + phone +
                 ", add_info='" + add_info + '\'' +
-                ", password=" + password +
+                ", password='" + password + '\'' +
                 ", verified=" + verified +
                 ", reservation=" + reservation +
+                ", online=" + online +
                 '}';
     }
-
 }
