@@ -28,3 +28,7 @@ p{
 .rp{
     color: red;
 }
+button{
+    cursor: default;
+
+}

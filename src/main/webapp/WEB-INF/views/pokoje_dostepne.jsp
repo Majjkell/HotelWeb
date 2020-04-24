@@ -7,17 +7,17 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 
-</head>
+</head>s
 <body>
     <c:forEach items="${rooms}" var="r">
         <section>
-            Liczba osob: <c:out value="${r.num_of_ppl}"/> <br>
-            Cena: <c:out value="${r.price}"/><br>
-            Ocena Gosci: <c:out value="${r.rating}"/><br>
-            Nr Pokoju: <C:out value="${r.numberOfRoom}"/><br>
-            Pokoj konferencyjny: <c:out value="${r.conference_room}"/><br>
-            Typ pokoju: <c:out value="${r.type_room}"/><br>
-            Dodatkowe informacje: <c:out value="${r.add_info}"/><br>
+            <button style="cursor: default;" class="btn btn-secondary">Liczba osob:</button><button type="button" class="btn btn-success"><c:out value="${r.num_of_ppl}"/></button> <br>
+            <button style="cursor: default;" class="btn btn-secondary">Cena:</button><button type="button" class="btn btn-success"><c:out value="${r.price}"/></button> <br>
+            <button style="cursor: default;" class="btn btn-secondary">Ocena Gosci:</button><button type="button" class="btn btn-success"> <c:out value="${r.rating}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Nr Pokoju:</button><button type="button" class="btn btn-success"> <c:out value="${r.numberOfRoom}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Pokoj konferencyjny:<button type="button" class="btn btn-success"> <c:out value="${r.conference_room}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Typ pokoju:</button><button type="button" class="btn btn-success"> <c:out value="${r.type_room}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Dodatkowe informacje:<button type="button" class="btn btn-success"><c:out value="${r.add_info}"/></button><br>
             <a href="/reservation/${r.numberOfRoom}" class="rp">Rezerwuj</a>
         </section>
     </c:forEach>
