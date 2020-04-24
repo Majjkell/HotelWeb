@@ -11,10 +11,7 @@ import hotel.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -92,7 +89,6 @@ public class ReservationController {
         guests.add(guest);
         reservation.setGuest(guests);
         reservation.setRoom(room);
-        System.out.println(reservation.toString());
         httpSession.setAttribute("reservation",reservation);
         httpSession.setAttribute("busy",busy);
         httpSession.setAttribute("room",room);
@@ -100,9 +96,10 @@ public class ReservationController {
         return "reservation";
     }
     @GetMapping("/submit")
-    public String submit(HttpSession httpSession){
+    public String submit(HttpSession httpSession,Model model,@RequestParam String add_info){
         Reservation reservation =(Reservation) httpSession.getAttribute("reservation");
-//        reservation.setAdd_info(add_info);
+
+        reservation.setAdd_info(add_info);
         Guest guest = (Guest) httpSession.getAttribute("guest");
         Busy busy = (Busy) httpSession.getAttribute("busy");
         Room room = (Room) httpSession.getAttribute("room");

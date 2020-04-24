@@ -13,9 +13,13 @@
     Liczba osob: <c:out value="${reservation.num_of_ppl}"/>
     Od kiedy: <c:out value="${reservation.date_from}"/>
     Do Kiedy: <c:out value="${reservation.date_to}"/>
+    Cena: <c:out value="${reservation.room.price}"/>
+    <form action="/submit" method="GET">
     Dodatkowe informacje: <input type="text"name="add_info">
-    Typ pokoju: <c:out value="${reservation.room_type}"/>
-    <a href="/submit">submit</a>
 
+    Typ pokoju: <c:out value="${reservation.room_type}"/>
+<%--    <a href="/submit">submit</a>--%>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </body>
 </html>
