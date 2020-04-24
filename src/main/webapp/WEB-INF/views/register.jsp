@@ -12,16 +12,16 @@
 <body>
 <form:form modelAttribute="guest" method="POST">
     <form:hidden path="id"/>
-    First Name: <form:input path="first_name"/>
-    Last Name: <form:input path="last_name"/>
-    Date Of Birth: <form:input type="Date" pattern="yyyy-MM-dd" path="date_of_birth"/>
-    Mail: <form:input path="mail"/>
-    Phone: <form:input path="phone"/>
-    Add Info <form:textarea path="add_info"/>
-    Password <form:input type="password" path="password"/>
+    <button style="cursor: default;" class="btn btn-success">First Name:</button><form:input path="first_name"/>
+    <button style="cursor: default;" class="btn btn-success">Last Name:</button><form:input path="last_name"/>
+    <button style="cursor: default;" class="btn btn-success">Date Of Birth:</button><form:input type="Date" pattern="yyyy-MM-dd" path="date_of_birth"/>
+    <button style="cursor: default;" class="btn btn-success">Mail:</button><form:input path="mail"/>
+    <button style="cursor: default;" class="btn btn-success">Phone:</button><form:input path="phone"/>
+    <button style="cursor: default;" class="btn btn-success">Add Info</button><form:textarea path="add_info"/>
+    <button style="cursor: default;" class="btn btn-success">Password</button><form:input type="password" path="password"/>
     <form:hidden path="verified" value="true" />
     <form:hidden path="online" value="1" />
-    <input type="submit" value="Submit">
+    <button type="submit" class="btn btn-danger">Submit</button>
 </form:form>
 
 </body>
