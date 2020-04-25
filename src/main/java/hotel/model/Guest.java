@@ -2,16 +2,12 @@ package hotel.model;
 
 
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
-import org.jboss.logging.Message;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "guests")
@@ -22,26 +18,22 @@ public class Guest {
     private Long id;
     @NotNull(message = "Prosze podac nazwisko")
     @NotBlank
-    private String first_name;
+    private String firstName;
     @NotNull(message = "Prosze podac nazwisko")
     @NotBlank
-    private String last_name;
+    private String lastName;
 
     @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
     @Email
     private String mail;
 
-    //Walidacje Numeru Telefonu
-    @Digits(integer = 9, fraction = 0)
-    @Pattern(regexp="\\d{6}")
-    @Length(min = 9,max = 9)
-    @Range(min = 9,max = 9,message = "Numer telefonu musi miec 9 cyfr")
-    private int phone;
+    @Pattern(regexp="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$")
+    private String phone;
 
-    private String add_info;
+    private String addInfo;
     @NotNull
     @NotBlank
     private String password;
@@ -58,13 +50,13 @@ public class Guest {
     public Guest() {
     }
 
-    public Guest(String first_name, String last_name, Date date_of_birth, String mail, int phone, String add_info, String password, boolean verified) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.date_of_birth = date_of_birth;
+    public Guest(String first_name, String lastName, Date dateOfBirth, String mail, String phone, String addInfo, String password, boolean verified) {
+        this.firstName = first_name;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
         this.mail = mail;
         this.phone = phone;
-        this.add_info = add_info;
+        this.addInfo = addInfo;
         this.password = password;
         this.verified = verified;
     }
@@ -85,28 +77,28 @@ public class Guest {
         this.online = online;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String first_name) {
+        this.firstName = first_name;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String last_name) {
+        this.lastName = last_name;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(Date date_of_birth) {
+        this.dateOfBirth = date_of_birth;
     }
 
     public Long getId() {
@@ -125,20 +117,20 @@ public class Guest {
         this.mail = mail;
     }
 
-    public int getPhone() {
+    public String  getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String  phone) {
         this.phone = phone;
     }
 
-    public String getAdd_info() {
-        return add_info;
+    public String getAddInfo() {
+        return addInfo;
     }
 
-    public void setAdd_info(String add_info) {
-        this.add_info = add_info;
+    public void setAddInfo(String add_info) {
+        this.addInfo = add_info;
     }
 
     public String getPassword() {
@@ -157,20 +149,6 @@ public class Guest {
         this.verified = verified;
     }
 
-    @Override
-    public String toString() {
-        return "Guest{" +
-                "id=" + id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", date_of_birth=" + date_of_birth +
-                ", mail='" + mail + '\'' +
-                ", phone=" + phone +
-                ", add_info='" + add_info + '\'' +
-                ", password='" + password + '\'' +
-                ", verified=" + verified +
-                ", reservation=" + reservation +
-                ", online=" + online +
-                '}';
-    }
+
+
 }

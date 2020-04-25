@@ -21,25 +21,10 @@
                 <a href="/rooms">Pokoj i Apartamenty</a>
             </li>
             <li class="nav-item">
-                <a href="#">Usługi</a>
-            </li>
-            <li class="nav-item">
                 <a href="#">Lokalizacja</a>
             </li>
             <li class="nav-item">
-                <a href="#">Restauracje</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Sale Konferencyjne</a>
-            </li>
-            <li class="nav-item">
                 <a href="/register">Rejestracja</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Galeria</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Zmiana Jezyka</a>
             </li>
         </ul>
     </nav>

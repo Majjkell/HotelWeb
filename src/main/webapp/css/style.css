@@ -7,20 +7,15 @@ a{
     text-decoration: none;
 }
 section{
-    height: 24vh;
+    /*height: 24vh;*/
 }
 .s1{
-    height: 9vh;
+    /*height: 9vh;*/
     width: 100vw;
     color: mediumblue;
     background-color: aqua;
 }
-.s2{
-    height: 80vh;
-    width: 60vw;
-    color: black;
-    background-color: green;
-}
+
 p{
     color: black;
 }

@@ -19,15 +19,15 @@ public class Reservation {
     private Room room;
     @ManyToMany
     private List<Guest> guest;
-    private int num_of_ppl;
+    private int numOfPpl;
     @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date_from;
+    private Date dateFrom;
     @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date_to;
-    private String add_info;
-    private String room_type;
+    private Date dateTo;
+    private String addInfo;
+    private String roomType;
 
 
     public Reservation() {
@@ -35,12 +35,12 @@ public class Reservation {
 
 
 
-    public int getNum_of_ppl() {
-        return num_of_ppl;
+    public int getNumOfPpl() {
+        return numOfPpl;
     }
 
-    public void setNum_of_ppl(int num_of_ppl) {
-        this.num_of_ppl = num_of_ppl;
+    public void setNumOfPpl(int num_of_ppl) {
+        this.numOfPpl = num_of_ppl;
     }
 
     public void setRoom(Set<Room> room) {
@@ -51,12 +51,12 @@ public class Reservation {
         this.guest = (List<Guest>) guest;
     }
 
-    public String getRoom_type() {
-        return room_type;
+    public String getRoomType() {
+        return roomType;
     }
 
-    public void setRoom_type(String room_type) {
-        this.room_type = room_type;
+    public void setRoomType(String room_type) {
+        this.roomType = room_type;
     }
 
     public Long getId() {
@@ -83,28 +83,28 @@ public class Reservation {
         this.guest = guest;
     }
 
-    public Date getDate_from() {
-        return date_from;
+    public Date getDateFrom() {
+        return dateFrom;
     }
 
-    public void setDate_from(Date date_from) {
-        this.date_from = date_from;
+    public void setDateFrom(Date date_from) {
+        this.dateFrom = date_from;
     }
 
-    public Date getDate_to() {
-        return date_to;
+    public Date getDateTo() {
+        return dateTo;
     }
 
-    public void setDate_to(Date date_to) {
-        this.date_to = date_to;
+    public void setDateTo(Date date_to) {
+        this.dateTo = date_to;
     }
 
-    public String getAdd_info() {
-        return add_info;
+    public String getAddInfo() {
+        return addInfo;
     }
 
-    public void setAdd_info(String add_info) {
-        this.add_info = add_info;
+    public void setAddInfo(String add_info) {
+        this.addInfo = add_info;
     }
 
     @Override
@@ -112,11 +112,11 @@ public class Reservation {
         return "Reservation{" +
                 "id=" + id +
                 ", room=" + room +
-                ", num_of_ppl=" + num_of_ppl +
-                ", date_from=" + date_from +
-                ", date_to=" + date_to +
-                ", add_info='" + add_info + '\'' +
-                ", room_type='" + room_type + '\'' +
+                ", num_of_ppl=" + numOfPpl +
+                ", date_from=" + dateFrom +
+                ", date_to=" + dateTo +
+                ", add_info='" + addInfo + '\'' +
+                ", room_type='" + roomType + '\'' +
                 '}';
     }
 }

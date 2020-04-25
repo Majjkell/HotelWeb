@@ -10,18 +10,12 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Room,Long> {
 
+    @Query(value = "SELECT r FROM Room AS r WHERE  r.numOfPpl = ?1 AND r.typeRoom = ?2")
+    List<Room> findRoomsByTypeRoomAndNumOfPpl(int numOfPpl,String typeRoom);
 
-//    @Query(value = "SELECT * FROM rooms AS r WHERE  r.num_of_ppl =: num_of_ppl AND r.type_room =: type_room")
-//    List<Room> findAllByRoomsByType_roomAndNum_of_ppl(@Param("num_of_ppl")int num_of_ppl,@Param("type_room")String type_room);
-
-    @Query(value = "SELECT r FROM Room AS r WHERE  r.num_of_ppl = ?1 AND r.type_room = ?2")
-    List<Room> findRoomsByType_roomAndNum_of_ppl(int num_of_ppl,String type_room);
-
-    @Query(value = "SELECT r FROM Room AS r WHERE r.type_room =: test")
+    @Query(value = "SELECT r FROM Room AS r WHERE r.typeRoom =: test")
     List<Room> findRoomsByType_room(@Param("test")String test);
 
-    //@Query(value = "SELECT r FROM Room AS r WHERE r.number_of_room =: number LIMIT 1")
-    //Room findFirstRoomByNumber_of_room(@Param("number") int number);
-
     Room findFirstByNumberOfRoom(int number);
+
 }

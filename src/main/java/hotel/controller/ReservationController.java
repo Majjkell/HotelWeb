@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class ReservationController {
@@ -41,23 +40,22 @@ public class ReservationController {
         if(roomList1!=null){
             httpSession.removeAttribute("rooms1");
         }
-        int num_of_ppl = reservation.getNum_of_ppl();
-        Date date_from = reservation.getDate_from();
-        Date date_to = reservation.getDate_to();
-        String type_room = reservation.getRoom_type();
-        List<Room> rooms = roomRepository.findRoomsByType_roomAndNum_of_ppl(num_of_ppl, type_room);
+        int numOfPpl = reservation.getNumOfPpl();
+        Date dateFrom = reservation.getDateFrom();
+        Date dateTo = reservation.getDateTo();
+        String type_room = reservation.getRoomType();
+        List<Room> rooms = roomRepository.findRoomsByTypeRoomAndNumOfPpl(numOfPpl, type_room);
         for (Room r : rooms) {
 
             if (!r.getBusies().isEmpty()){
                 for (Busy b : r.getBusies()) {
-                    if (date_from.compareTo(b.getDate_from()) == 0 && date_from.compareTo(b.getDate_to()) == 0 && date_to.compareTo(b.getDate_to()) == 0 && date_to.compareTo(b.getDate_from()) == 0 &&
-                            date_from.compareTo(b.getDate_from()) > 0 && date_from.compareTo(b.getDate_to()) < 0 && date_to.compareTo(b.getDate_from()) > 0 && date_to.compareTo(b.getDate_to()) < 0) {
+                    if (dateFrom.compareTo(b.getDateFrom()) == 0 && dateFrom.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateFrom()) == 0 &&
+                            dateFrom.compareTo(b.getDateFrom()) > 0 && dateFrom.compareTo(b.getDateTo()) < 0 && dateTo.compareTo(b.getDateFrom()) > 0 && dateTo.compareTo(b.getDateTo()) < 0) {
                         rooms.remove(r);
                     }
                 }
             }
         }
-        System.out.println(rooms);
         httpSession.setAttribute("rooms",rooms);
         httpSession.setAttribute("reservation",reservation);
         return "rooms";
@@ -65,16 +63,15 @@ public class ReservationController {
 
     @RequestMapping(value = "/reservation/{number}")
     public String reserv(@PathVariable int number,HttpSession httpSession){
-//        int number1 = Integer.parseInt(number);
         Room room = roomRepository.findFirstByNumberOfRoom(number);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
         Guest guest = guestRepository.findFirstByOnline(1);
 
-        //busy polaczenie z room
         Busy busy = new Busy();
-        busy.setDate_from(reservation.getDate_from());
-        busy.setDate_to(reservation.getDate_to());
+        busy.setDateFrom(reservation.getDateFrom());
+        busy.setDateTo(reservation.getDateTo());
         busy.setRoom(room);
+
         List<Busy> busies = room.getBusies();
         busies.add(busy);
         room.setBusies(busies);
@@ -86,9 +83,11 @@ public class ReservationController {
         if(guests==null){
             guests = new ArrayList<>();
         }
+
         guests.add(guest);
         reservation.setGuest(guests);
         reservation.setRoom(room);
+
         httpSession.setAttribute("reservation",reservation);
         httpSession.setAttribute("busy",busy);
         httpSession.setAttribute("room",room);
@@ -99,7 +98,7 @@ public class ReservationController {
     public String submit(HttpSession httpSession,Model model,@RequestParam String add_info){
         Reservation reservation =(Reservation) httpSession.getAttribute("reservation");
 
-        reservation.setAdd_info(add_info);
+        reservation.setAddInfo(add_info);
         Guest guest = (Guest) httpSession.getAttribute("guest");
         Busy busy = (Busy) httpSession.getAttribute("busy");
         Room room = (Room) httpSession.getAttribute("room");

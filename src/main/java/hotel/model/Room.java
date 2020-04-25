@@ -11,13 +11,13 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int num_of_ppl;
+    private int numOfPpl;
     private double price;
     private int rating;
     private int numberOfRoom;
-    private boolean conference_room;
-    private String add_info;
-    private String type_room;
+    private boolean conferenceRoom;
+    private String addInfo;
+    private String typeRoom;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Busy> busies = new ArrayList<>();
 
@@ -35,20 +35,20 @@ public class Room {
         this.busies = busies;
     }
 
-    public String getAdd_info() {
-        return add_info;
+    public String getAddInfo() {
+        return addInfo;
     }
 
-    public void setAdd_info(String add_info) {
-        this.add_info = add_info;
+    public void setAddInfo(String add_info) {
+        this.addInfo = add_info;
     }
 
-    public String getType_room() {
-        return type_room;
+    public String getTypeRoom() {
+        return typeRoom;
     }
 
-    public void setType_room(String type_room) {
-        this.type_room = type_room;
+    public void setTypeRoom(String type_room) {
+        this.typeRoom = type_room;
     }
 
     public Long getId() {
@@ -59,12 +59,12 @@ public class Room {
         this.id = id;
     }
 
-    public int getNum_of_ppl() {
-        return num_of_ppl;
+    public int getNumOfPpl() {
+        return numOfPpl;
     }
 
-    public void setNum_of_ppl(int num_of_ppl) {
-        this.num_of_ppl = num_of_ppl;
+    public void setNumOfPpl(int num_of_ppl) {
+        this.numOfPpl = num_of_ppl;
     }
 
     public double getPrice() {
@@ -91,25 +91,25 @@ public class Room {
         this.numberOfRoom = number;
     }
 
-    public boolean isConference_room() {
-        return conference_room;
+    public boolean isConferenceRoom() {
+        return conferenceRoom;
     }
 
-    public void setConference_room(boolean conference_room) {
-        this.conference_room = conference_room;
+    public void setConferenceRoom(boolean conference_room) {
+        this.conferenceRoom = conference_room;
     }
 
     @Override
     public String toString() {
         return "Room{" +
                 "id=" + id +
-                ", num_of_ppl=" + num_of_ppl +
+                ", num_of_ppl=" + numOfPpl +
                 ", price=" + price +
                 ", rating=" + rating +
                 ", number=" + numberOfRoom +
-                ", conference_room=" + conference_room +
-                ", add_info='" + add_info + '\'' +
-                ", type_room='" + type_room + '\'' +
+                ", conference_room=" + conferenceRoom +
+                ", add_info='" + addInfo + '\'' +
+                ", type_room='" + typeRoom + '\'' +
                 ", busies=" + busies +
                 '}';
     }
