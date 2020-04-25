@@ -2,6 +2,9 @@ package hotel.model;
 
 
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+import org.jboss.logging.Message;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -17,21 +20,30 @@ public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotNull(message = "Prosze podac nazwisko")
+    @NotBlank
     private String first_name;
-
+    @NotNull(message = "Prosze podac nazwisko")
+    @NotBlank
     private String last_name;
 
+    @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_of_birth;
 
-
+    @Email
     private String mail;
 
+    //Walidacje Numeru Telefonu
+    @Digits(integer = 9, fraction = 0)
+    @Pattern(regexp="\\d{6}")
+    @Length(min = 9,max = 9)
+    @Range(min = 9,max = 9,message = "Numer telefonu musi miec 9 cyfr")
     private int phone;
 
     private String add_info;
-
+    @NotNull
+    @NotBlank
     private String password;
 
     private boolean verified;

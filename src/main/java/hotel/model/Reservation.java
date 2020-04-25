@@ -3,6 +3,7 @@ package hotel.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -19,26 +20,20 @@ public class Reservation {
     @ManyToMany
     private List<Guest> guest;
     private int num_of_ppl;
+    @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_from;
+    @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_to;
     private String add_info;
     private String room_type;
-//    @OneToOne
-//    private Busy busy;
 
 
     public Reservation() {
     }
 
-//    public Busy getBusy() {
-//        return busy;
-//    }
 
-//    public void setBusy(Busy busy) {
-//        this.busy = busy;
-//    }
 
     public int getNum_of_ppl() {
         return num_of_ppl;
