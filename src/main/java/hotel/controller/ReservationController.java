@@ -61,9 +61,9 @@ public class ReservationController {
         return "rooms";
     }
 
-    @RequestMapping(value = "/reservation/{number}")
-    public String reservation(@PathVariable int number,HttpSession httpSession){
-        Room room = roomRepository.findFirstByNumberOfRoom(number);
+    @RequestMapping(value = "/reservation/{numberOfRoom}")
+    public String reservation(@PathVariable int numberOfRoom,HttpSession httpSession){
+        Room room = roomRepository.findFirstByNumberOfRoom(numberOfRoom);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
         Guest guest = guestRepository.findFirstByOnline(1);
 
@@ -76,7 +76,10 @@ public class ReservationController {
         busies.add(busy);
         room.setBusies(busies);
 
-        List<Reservation> reservations = guest.getReservation();
+        List<Reservation> reservations = new ArrayList<>();
+//        if(reservations==null){
+//            reservations = new ArrayList<>();
+//        }
         reservations.add(reservation);
 
         List<Guest> guests = reservation.getGuest();
@@ -95,13 +98,17 @@ public class ReservationController {
         return "reservation";
     }
     @GetMapping("/submit")
-    public String submit(HttpSession httpSession,@RequestParam String add_info){
+    public String submit(HttpSession httpSession,@RequestParam String addInfo){
         Reservation reservation =(Reservation) httpSession.getAttribute("reservation");
 
-        reservation.setAddInfo(add_info);
+        reservation.setAddInfo(addInfo);
         Guest guest = (Guest) httpSession.getAttribute("guest");
         Busy busy = (Busy) httpSession.getAttribute("busy");
         Room room = (Room) httpSession.getAttribute("room");
+        System.out.println(guest.toString());
+        System.out.println(room.toString());
+        System.out.println(reservation.toString());
+        System.out.println(busy.toString());
         reservationRepository.save(reservation);
         busyRepsository.save(busy);
         roomRepository.save(room);

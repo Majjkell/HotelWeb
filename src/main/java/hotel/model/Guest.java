@@ -27,7 +27,7 @@ public class Guest {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
-    @Email
+
     private String mail;
 
     @Pattern(regexp="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$")
@@ -149,6 +149,20 @@ public class Guest {
         this.verified = verified;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", mail='" + mail + '\'' +
+                ", phone='" + phone + '\'' +
+                ", addInfo='" + addInfo + '\'' +
+                ", password='" + password + '\'' +
+                ", verified=" + verified +
+                ", reservation=" + reservation +
+                ", online=" + online +
+                '}';
+    }
 }

@@ -103,13 +103,13 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "id=" + id +
-                ", num_of_ppl=" + numOfPpl +
+                ", numOfPpl=" + numOfPpl +
                 ", price=" + price +
                 ", rating=" + rating +
-                ", number=" + numberOfRoom +
-                ", conference_room=" + conferenceRoom +
-                ", add_info='" + addInfo + '\'' +
-                ", type_room='" + typeRoom + '\'' +
+                ", numberOfRoom=" + numberOfRoom +
+                ", conferenceRoom=" + conferenceRoom +
+                ", addInfo='" + addInfo + '\'' +
+                ", typeRoom='" + typeRoom + '\'' +
                 ", busies=" + busies +
                 '}';
     }

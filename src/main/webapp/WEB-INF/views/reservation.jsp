@@ -10,12 +10,12 @@
 <body>
     <p> DANE DOTYCZACE REZERWACJI</p>
     Nr pokoju<c:out value="${reservation.room.numberOfRoom}"/>
-    Liczba osob: <c:out value="${reservation.num_of_ppl}"/>
-    Od kiedy: <c:out value="${reservation.date_from}"/>
-    Do Kiedy: <c:out value="${reservation.date_to}"/>
+    Liczba osob: <c:out value="${reservation.numOfPpl}"/>
+    Od kiedy: <c:out value="${reservation.dateFrom}"/>
+    Do Kiedy: <c:out value="${reservation.dateTo}"/>
     Cena: <c:out value="${reservation.room.price}"/>
     <form action="/submit" method="GET">
-    Dodatkowe informacje: <input type="text"name="add_info">
+    Dodatkowe informacje: <input type="text"name="addInfo">
 
     Typ pokoju: <c:out value="${reservation.roomType}"/>
 <%--    <a href="/submit">submit</a>--%>

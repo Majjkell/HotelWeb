@@ -11,14 +11,14 @@
 <body>
     <c:forEach items="${rooms}" var="r">
         <section>
-            <button style="cursor: default;" class="btn btn-secondary">Liczba osob:</button><button type="button" class="btn btn-success"><c:out value="${r.num_of_ppl}"/></button> <br>
-            <button style="cursor: default;" class="btn btn-secondary">Cena:</button><button type="button" class="btn btn-success"><c:out value="${r.price}"/></button> <br>
-            <button style="cursor: default;" class="btn btn-secondary">Ocena Gosci:</button><button type="button" class="btn btn-success"> <c:out value="${r.rating}"/></button><br>
-            <button style="cursor: default;" class="btn btn-secondary">Nr Pokoju:</button><button type="button" class="btn btn-success"> <c:out value="${r.numberOfRoom}"/></button><br>
-            <button style="cursor: default;" class="btn btn-secondary">Pokoj konferencyjny:</button><button type="button" class="btn btn-success"> <c:out value="${r.conference_room}"/></button><br>
-            <button style="cursor: default;" class="btn btn-secondary">Typ pokoju:</button><button type="button" class="btn btn-success"> <c:out value="${r.type_room}"/></button><br>
-            <button style="cursor: default;" class="btn btn-secondary">Dodatkowe informacje:</button><button type="button" class="btn btn-success"><c:out value="${r.add_info}"/></button><br>
-            <a href="/reservation/${r.numberOfRoom}" class="rp">Rezerwuj</a>
+            <button style="cursor: default;" class="btn btn-secondary">Number Of People:</button><button type="button" class="btn btn-success"><c:out value="${r.numOfPpl}"/></button> <br>
+            <button style="cursor: default;" class="btn btn-secondary">Price:</button><button type="button" class="btn btn-success"><c:out value="${r.price}"/></button> <br>
+            <button style="cursor: default;" class="btn btn-secondary">Rating:</button><button type="button" class="btn btn-success"> <c:out value="${r.rating}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Room Number:</button><button type="button" class="btn btn-success"> <c:out value="${r.numberOfRoom}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Conference Room:</button><button type="button" class="btn btn-success"> <c:out value="${r.conferenceRoom}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Room Type:</button><button type="button" class="btn btn-success"> <c:out value="${r.typeRoom}"/></button><br>
+            <button style="cursor: default;" class="btn btn-secondary">Additional Informations:</button><button type="button" class="btn btn-success"><c:out value="${r.addInfo}"/></button><br>
+            <a href="/reservation/${r.numberOfRoom}" class="rp">Reserv</a>
         </section>
     </c:forEach>
 </body>

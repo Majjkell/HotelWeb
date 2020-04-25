@@ -44,4 +44,14 @@ public class Busy {
     public void setRoom(Room room) {
         this.room = room;
     }
+
+    @Override
+    public String toString() {
+        return "Busy{" +
+                "id=" + id +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", room=" + room +
+                '}';
+    }
 }
