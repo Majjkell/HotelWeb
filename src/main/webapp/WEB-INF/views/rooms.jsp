@@ -11,11 +11,11 @@
 <%@ include file="nav.jsp" %>
 <section class="s1">
 <p>Dane szukanego pokoju</p>
-    <form:form modelAttribute="reservation" action="/wybor_pokoju" method="POST">
-        Liczba osob: <form:input type="number" path="num_of_ppl"/>
-        Pobyt od: <form:input type="date" pattern="yyyy-MM-dd" path="date_from" />
-        Pobyt do: <form:input type="date" pattern="yyyy-MM-dd" path="date_to"/>
-        Typ pokoju: <form:select path="room_type" items="${type}"/>
+    <form:form modelAttribute="reservation" action="/roomChoose" method="POST">
+        Number Of People: <form:input type="number" path="numOfPpl"/>
+        Stay From: <form:input type="date" pattern="yyyy-MM-dd" path="dateFrom" />
+        Stay To: <form:input type="date" pattern="yyyy-MM-dd" path="dateTo"/>
+        Room Type: <form:select path="roomType" items="${type}"/>
         <input type="submit"value="Dalej">
     </form:form>
 

@@ -17,7 +17,7 @@
     <form action="/submit" method="GET">
     Dodatkowe informacje: <input type="text"name="add_info">
 
-    Typ pokoju: <c:out value="${reservation.room_type}"/>
+    Typ pokoju: <c:out value="${reservation.roomType}"/>
 <%--    <a href="/submit">submit</a>--%>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

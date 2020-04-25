@@ -55,8 +55,8 @@ public class Reservation {
         return roomType;
     }
 
-    public void setRoomType(String room_type) {
-        this.roomType = room_type;
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 
     public Long getId() {
@@ -112,11 +112,12 @@ public class Reservation {
         return "Reservation{" +
                 "id=" + id +
                 ", room=" + room +
-                ", num_of_ppl=" + numOfPpl +
-                ", date_from=" + dateFrom +
-                ", date_to=" + dateTo +
-                ", add_info='" + addInfo + '\'' +
-                ", room_type='" + roomType + '\'' +
+                ", guest=" + guest +
+                ", numOfPpl=" + numOfPpl +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", addInfo='" + addInfo + '\'' +
+                ", roomType='" + roomType + '\'' +
                 '}';
     }
 }

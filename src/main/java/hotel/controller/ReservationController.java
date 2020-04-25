@@ -10,7 +10,6 @@ import hotel.repository.ReservationRepository;
 import hotel.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -34,8 +33,8 @@ public class ReservationController {
     }
 
 
-    @RequestMapping("/wybor_pokoju")
-    public String wybor_pokoju(Reservation reservation, HttpSession httpSession) {
+    @RequestMapping("/roomChoose")
+    public String roomChoose(Reservation reservation, HttpSession httpSession) {
         List<Room> roomList1 = (List<Room>) httpSession.getAttribute("rooms1");
         if(roomList1!=null){
             httpSession.removeAttribute("rooms1");
@@ -43,10 +42,10 @@ public class ReservationController {
         int numOfPpl = reservation.getNumOfPpl();
         Date dateFrom = reservation.getDateFrom();
         Date dateTo = reservation.getDateTo();
-        String type_room = reservation.getRoomType();
-        List<Room> rooms = roomRepository.findRoomsByTypeRoomAndNumOfPpl(numOfPpl, type_room);
+        String typeRoom = reservation.getRoomType();
+        List<Room> rooms = roomRepository.findRoomsByTypeRoomAndNumOfPpl(numOfPpl, typeRoom);
+        System.out.println(reservation.toString());
         for (Room r : rooms) {
-
             if (!r.getBusies().isEmpty()){
                 for (Busy b : r.getBusies()) {
                     if (dateFrom.compareTo(b.getDateFrom()) == 0 && dateFrom.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateFrom()) == 0 &&
@@ -56,13 +55,14 @@ public class ReservationController {
                 }
             }
         }
+
         httpSession.setAttribute("rooms",rooms);
         httpSession.setAttribute("reservation",reservation);
         return "rooms";
     }
 
     @RequestMapping(value = "/reservation/{number}")
-    public String reserv(@PathVariable int number,HttpSession httpSession){
+    public String reservation(@PathVariable int number,HttpSession httpSession){
         Room room = roomRepository.findFirstByNumberOfRoom(number);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
         Guest guest = guestRepository.findFirstByOnline(1);
@@ -95,7 +95,7 @@ public class ReservationController {
         return "reservation";
     }
     @GetMapping("/submit")
-    public String submit(HttpSession httpSession,Model model,@RequestParam String add_info){
+    public String submit(HttpSession httpSession,@RequestParam String add_info){
         Reservation reservation =(Reservation) httpSession.getAttribute("reservation");
 
         reservation.setAddInfo(add_info);
@@ -107,7 +107,7 @@ public class ReservationController {
         roomRepository.save(room);
         guestRepository.save(guest);
 
-        return "index";
+        return "redirect:/";
     }
 
 }
