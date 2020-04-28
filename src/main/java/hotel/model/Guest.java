@@ -43,8 +43,8 @@ public class Guest {
     @ManyToMany(mappedBy = "guest",fetch = FetchType.EAGER)
     private List<Reservation> reservation;
 
-    @Max(1)
-    private int online;
+
+    private boolean online;
 
 
     public Guest() {
@@ -69,11 +69,11 @@ public class Guest {
         this.reservation = reservation;
     }
 
-    public int getOnline() {
+    public boolean isOnline() {
         return online;
     }
 
-    public void setOnline(int online) {
+    public void setOnline(boolean online) {
         this.online = online;
     }
 

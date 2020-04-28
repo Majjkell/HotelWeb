@@ -47,7 +47,7 @@
             <form:input class="form-control" type="password" placeholder="Password" path="password"/>
         </div>
         <form:hidden path="verified" value="true"/>
-        <form:hidden path="online" value="1"/>
+        <form:hidden path="online" value="true"/>
         <div class="form-group">
         <button type="submit" class="btn btn-danger">Submit</button>
         </div>

@@ -44,7 +44,6 @@ public class ReservationController {
         Date dateTo = reservation.getDateTo();
         String typeRoom = reservation.getRoomType();
         List<Room> rooms = roomRepository.findRoomsByTypeRoomAndNumOfPpl(numOfPpl, typeRoom);
-        System.out.println(reservation.toString());
         for (Room r : rooms) {
             if (!r.getBusies().isEmpty()){
                 for (Busy b : r.getBusies()) {
@@ -65,7 +64,8 @@ public class ReservationController {
     public String reservation(@PathVariable int numberOfRoom,HttpSession httpSession){
         Room room = roomRepository.findFirstByNumberOfRoom(numberOfRoom);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
-        Guest guest = guestRepository.findFirstByOnline(1);
+        Guest guest = guestRepository.findFirstByOnline(true);
+
 
         Busy busy = new Busy();
         busy.setDateFrom(reservation.getDateFrom());
@@ -105,10 +105,8 @@ public class ReservationController {
         Guest guest = (Guest) httpSession.getAttribute("guest");
         Busy busy = (Busy) httpSession.getAttribute("busy");
         Room room = (Room) httpSession.getAttribute("room");
-        System.out.println(guest.toString());
-        System.out.println(room.toString());
-        System.out.println(reservation.toString());
-        System.out.println(busy.toString());
+
+
         reservationRepository.save(reservation);
         busyRepsository.save(busy);
         roomRepository.save(room);
