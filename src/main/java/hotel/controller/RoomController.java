@@ -30,9 +30,9 @@ public class RoomController {
 //        List<String> typelist = (List<String>) httpSession.getAttribute("type");
         if(httpSession.getAttribute("type")==null){
             List<String> typelist = new ArrayList<>();
-            typelist.add("classic");
+            typelist.add("Classic");
             typelist.add("Comfort");
-            typelist.add("premium");
+            typelist.add("Premium");
             httpSession.setAttribute("type",typelist);
         }
         Reservation reservation = new Reservation();

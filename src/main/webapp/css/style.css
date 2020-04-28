@@ -27,3 +27,23 @@ button{
     cursor: default;
 
 }
+
+/*div{*/
+/*    display: inline-block;*/
+/*}*/
+.form{
+    width: 50vw !important;
+    height: 80vh;
+    display: inline-block;
+}
+.formlr{
+    width: 25vw;
+    height: 80vh;
+    background-color: pink;
+}
+.form-group{
+    width: 600px;
+}
+body{
+    background-color: aqua;
+}

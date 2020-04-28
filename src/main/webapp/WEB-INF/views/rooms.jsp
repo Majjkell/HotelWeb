@@ -3,23 +3,34 @@
 <html>
 <head>
     <title>Pokoje</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <%@ include file="nav.jsp" %>
 <section class="s1">
-<p>Dane szukanego pokoju</p>
+    <p>Dane szukanego pokoju</p>
     <form:form modelAttribute="reservation" action="/roomChoose" method="POST">
-        Number Of People: <form:input type="number" path="numOfPpl"/>
-        Stay From: <form:input type="date" pattern="yyyy-MM-dd" path="dateFrom" />
-        Stay To: <form:input type="date" pattern="yyyy-MM-dd" path="dateTo"/>
-        Room Type: <form:select path="roomType" items="${type}"/>
-        <input type="submit"value="Dalej">
+        <div class="form-group">
+            <button style="cursor: default;" class="btn btn-success">Number Of People:</button><form:input class="form-control" type="number" path="numOfPpl"/>
+        </div>
+        <div class="form-group">
+            <button style="cursor: default;" class="btn btn-success">Stay From:</button><form:input class="form-control" type="date" pattern="yyyy-MM-dd" path="dateFrom"/>
+        </div>
+        <div class="form-group">
+            <button style="cursor: default;" class="btn btn-success">Stay To:</button><form:input class="form-control" type="date" pattern="yyyy-MM-dd" path="dateTo"/>
+        </div>
+        <div class="form-group">
+            <button style="cursor: default;" class="btn btn-success">Room Type:</button><form:select class="form-control" path="roomType" items="${type}"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </div>
     </form:form>
-
-
 
 
 </section>
