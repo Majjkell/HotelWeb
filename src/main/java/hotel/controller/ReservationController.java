@@ -48,7 +48,7 @@ public class ReservationController {
             if (!r.getBusies().isEmpty()){
                 for (Busy b : r.getBusies()) {
                     if (dateFrom.compareTo(b.getDateFrom()) == 0 && dateFrom.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateFrom()) == 0 &&
-                            dateFrom.compareTo(b.getDateFrom()) > 0 && dateFrom.compareTo(b.getDateTo()) < 0 && dateTo.compareTo(b.getDateFrom()) > 0 && dateTo.compareTo(b.getDateTo()) < 0) {
+                            dateFrom.compareTo(b.getDateFrom()) < 0 && dateFrom.compareTo(b.getDateTo()) > 0 && dateTo.compareTo(b.getDateFrom()) < 0 && dateTo.compareTo(b.getDateTo()) > 0) {
                         rooms.remove(r);
                     }
                 }
