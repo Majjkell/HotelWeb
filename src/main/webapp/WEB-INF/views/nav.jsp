@@ -21,7 +21,7 @@
                 <a href="/rooms">Pokoj i Apartamenty</a>
             </li>
             <li class="nav-item">
-                <a href="#">Lokalizacja</a>
+                <a href="/">Lokalizacja</a>
             </li>
             <li class="nav-item">
                 <a href="/register">Rejestracja</a>

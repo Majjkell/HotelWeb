@@ -6,20 +6,6 @@ a{
     color: yellow;
     text-decoration: none;
 }
-section{
-    /*height: 24vh;*/
-}
-.s1{
-    /*height: 9vh;*/
-    width: 100vw;
-    color: mediumblue;
-    background-color: aqua;
-}
-
-p{
-    color: black;
-}
-
 .rp{
     color: red;
 }
@@ -27,23 +13,16 @@ button{
     cursor: default;
 
 }
-
-/*div{*/
-/*    display: inline-block;*/
-/*}*/
 .form{
     width: 50vw !important;
-    height: 80vh;
+    height: 48vh;
     display: inline-block;
 }
 .formlr{
     width: 25vw;
-    height: 80vh;
-    background-color: pink;
+    display: inline-block;
 }
-.form-group{
-    width: 600px;
-}
-body{
-    background-color: aqua;
+.table {
+    width: 80vw;
+    margin-left: 10vw;
 }

@@ -15,36 +15,36 @@
 <c:forEach items="${rooms}" var="r">
     <%--        <section>--%>
     <table class="table table-bordered">
-        <tr>
-            <th>Number Of People:</th>
-            <td><c:out value="${r.numOfPpl}"/></td>
+        <tr class="bg-dark">
+            <th class="bg-success">Number Of People:</th>
+            <td class="bg-success"><c:out value="${r.numOfPpl}"/></td>
         </tr>
-        <tr>
-            <th>Price:</th>
-            <td><c:out value="${r.price}"/></td>
+        <tr class="bg-dark">
+            <th class="bg-success">Price:</th>
+            <td class="bg-success"><c:out value="${r.price}"/></td>
         </tr>
-        <tr>
-            <th>Rating:</th>
-            <td><c:out value="${r.rating}"/></td>
+        <tr class="bg-dark">
+            <th class="bg-success">Rating:</th>
+            <td class="bg-success"><c:out value="${r.rating}"/></td>
         </tr>
-        <tr>
-            <th>Room Number:</th>
-            <td><c:out value="${r.numberOfRoom}"/></td>
+        <tr class="bg-dark">
+            <th class="bg-success">Room Number:</th>
+            <td class="bg-success"><c:out value="${r.numberOfRoom}"/></td>
         </tr>
-        <tr>
-            <th>Conference Room:</th>
-            <td><c:out value="${r.conferenceRoom}"/></td>
+        <tr class="bg-dark">
+            <th class="bg-success">Conference Room:</th>
+            <td class="bg-success"><c:out value="${r.conferenceRoom}"/></td>
         </tr>
-        <tr>
-            <th>Room Type:</th>
-            <td><c:out value="${r.typeRoom}"/></td>
+        <tr class="bg-dark">
+            <th class="bg-success">Room Type:</th>
+            <td class="bg-success"><c:out value="${r.typeRoom}"/></td>
         </tr>
-        <tr>
-            <th>Additional Informations:</th>
-            <td><c:out value="${r.addInfo}"/></td>
+        <tr class="bg-dark">
+            <th class="bg-success">Additional Informations:</th>
+            <td class="bg-success"><c:out value="${r.addInfo}"/></td>
         </tr>
-        <tr>
-            <th colspan="2" ><a href="/reservation/${r.numberOfRoom}" class="rp">Reserv</a></th>
+        <tr class="bg-dark">
+            <th class="bg-success" colspan="2" ><a href="/reservation/${r.numberOfRoom}" class="rp">Reserv</a></th>
     </table>
     <%--        </section>--%>
 </c:forEach>
