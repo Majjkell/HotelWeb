@@ -25,7 +25,7 @@ public class ReservationController {
     private final BusyRepsository busyRepsository;
 
     @Autowired
-    public ReservationController(RoomRepository roomRepository,GuestRepository guestRepository, ReservationRepository reservationRepository, BusyRepsository busyRepsository) {
+    public ReservationController(RoomRepository roomRepository, GuestRepository guestRepository, ReservationRepository reservationRepository, BusyRepsository busyRepsository) {
         this.roomRepository = roomRepository;
         this.guestRepository = guestRepository;
         this.reservationRepository = reservationRepository;
@@ -35,8 +35,13 @@ public class ReservationController {
 
     @RequestMapping("/roomChoose")
     public String roomChoose(Reservation reservation, HttpSession httpSession) {
+        Guest guest = (Guest) httpSession.getAttribute("guest");
+        if (guest == null) {
+            return "redirect:login";
+        }
+        httpSession.removeAttribute("rooms");
         List<Room> roomList1 = (List<Room>) httpSession.getAttribute("rooms1");
-        if(roomList1!=null){
+        if (roomList1 != null) {
             httpSession.removeAttribute("rooms1");
         }
         int numOfPpl = reservation.getNumOfPpl();
@@ -44,24 +49,36 @@ public class ReservationController {
         Date dateTo = reservation.getDateTo();
         String typeRoom = reservation.getRoomType();
         List<Room> rooms = roomRepository.findRoomsByTypeRoomAndNumOfPpl(numOfPpl, typeRoom);
-        for (Room r : rooms) {
+        try {
+            for (Room r : rooms) {
                 for (Busy b : r.getBusies()) {
-                    if (dateFrom.compareTo(b.getDateFrom()) == 0 && dateFrom.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateFrom()) == 0 &&
-                            dateFrom.compareTo(b.getDateFrom()) < 0 && dateFrom.compareTo(b.getDateTo()) > 0 && dateTo.compareTo(b.getDateFrom()) < 0 && dateTo.compareTo(b.getDateTo()) > 0) {
+                    if (b.getDateFrom().compareTo(dateFrom) == 0 || b.getDateTo().compareTo(dateTo) == 0) {
+                        rooms.remove(r);
+                    }
+                    if (dateTo.compareTo(b.getDateTo()) < 0 && dateTo.compareTo(b.getDateFrom()) > 0) {
+                        rooms.remove(r);
+                    }
+                    if (dateFrom.compareTo(b.getDateTo()) < 0 && dateFrom.compareTo(b.getDateFrom()) > 0) {
+                        rooms.remove(r);
+                    }
+                    if (dateFrom.compareTo(b.getDateFrom()) < 0 && dateTo.compareTo(b.getDateTo()) > 0) {
                         rooms.remove(r);
                     }
                 }
+            }
+        } catch (java.util.ConcurrentModificationException e) {
+            System.out.println(e.getStackTrace().toString());
         }
 
-        httpSession.setAttribute("rooms",rooms);
-        httpSession.setAttribute("reservation",reservation);
+        httpSession.setAttribute("rooms", rooms);
+        httpSession.setAttribute("reservation", reservation);
         return "rooms";
     }
 
     @RequestMapping(value = "/reservation/{numberOfRoom}")
-    public String reservation(@PathVariable int numberOfRoom,HttpSession httpSession){
+    public String reservation(@PathVariable int numberOfRoom, HttpSession httpSession) {
         Guest guest = (Guest) httpSession.getAttribute("guest");
-        if (guest==null){
+        if (guest == null) {
             return "redirect:login";
         }
         Room room = roomRepository.findFirstByNumberOfRoom(numberOfRoom);
@@ -84,7 +101,7 @@ public class ReservationController {
         reservations.add(reservation);
 
         List<Guest> guests = reservation.getGuest();
-        if(guests==null){
+        if (guests == null) {
             guests = new ArrayList<>();
         }
 
@@ -92,19 +109,20 @@ public class ReservationController {
         reservation.setGuest(guests);
         reservation.setRoom(room);
         List<Reservation> reservationList = guest.getReservation();
-        if(reservationList == null){
+        if (reservationList == null) {
             reservationList = new ArrayList<>();
         }
         reservationList.add(reservation);
-        httpSession.setAttribute("reservation",reservation);
-        httpSession.setAttribute("busy",busy);
-        httpSession.setAttribute("room",room);
-        httpSession.setAttribute("guest",guest);
+        httpSession.setAttribute("reservation", reservation);
+        httpSession.setAttribute("busy", busy);
+        httpSession.setAttribute("room", room);
+        httpSession.setAttribute("guest", guest);
         return "reservation";
     }
+
     @GetMapping("/submit")
-    public String submit(HttpSession httpSession,@RequestParam String addInfo){
-        Reservation reservation =(Reservation) httpSession.getAttribute("reservation");
+    public String submit(HttpSession httpSession, @RequestParam String addInfo) {
+        Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
 
         reservation.setAddInfo(addInfo);
         Guest guest = (Guest) httpSession.getAttribute("guest");
@@ -122,14 +140,14 @@ public class ReservationController {
 
 
     @GetMapping("/myReservations")
-    public String myReservations(HttpSession httpSession){
+    public String myReservations(HttpSession httpSession) {
         Guest guest = (Guest) httpSession.getAttribute("guest");
-        if (guest==null){
+        if (guest == null) {
             return "redirect:/login";
         }
         System.out.println(guest.toString());
         List<Reservation> myReservations = guest.getReservation();
-        httpSession.setAttribute("myReservations",myReservations);
+        httpSession.setAttribute("myReservations", myReservations);
         System.out.println(myReservations.size());
         return "myReservations";
     }
