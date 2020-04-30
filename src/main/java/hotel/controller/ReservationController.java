@@ -52,7 +52,10 @@ public class ReservationController {
         try {
             for (Room r : rooms) {
                 for (Busy b : r.getBusies()) {
-                    if (b.getDateFrom().compareTo(dateFrom) == 0 || b.getDateTo().compareTo(dateTo) == 0) {
+                    if (dateFrom.compareTo(b.getDateFrom()) == 0 || dateFrom.compareTo(b.getDateTo())==0) {
+                        rooms.remove(r);
+                    }
+                    if (dateTo.compareTo(b.getDateTo()) == 0 || dateTo.compareTo(b.getDateFrom()) == 0) {
                         rooms.remove(r);
                     }
                     if (dateTo.compareTo(b.getDateTo()) < 0 && dateTo.compareTo(b.getDateFrom()) > 0) {
@@ -67,7 +70,7 @@ public class ReservationController {
                 }
             }
         } catch (java.util.ConcurrentModificationException e) {
-            System.out.println(e.getStackTrace().toString());
+            System.out.println(e.getStackTrace());
         }
 
         httpSession.setAttribute("rooms", rooms);
