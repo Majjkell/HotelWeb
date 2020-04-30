@@ -161,7 +161,6 @@ public class Guest {
                 ", addInfo='" + addInfo + '\'' +
                 ", password='" + password + '\'' +
                 ", verified=" + verified +
-                ", reservation=" + reservation +
                 ", online=" + online +
                 '}';
     }

@@ -45,14 +45,12 @@ public class ReservationController {
         String typeRoom = reservation.getRoomType();
         List<Room> rooms = roomRepository.findRoomsByTypeRoomAndNumOfPpl(numOfPpl, typeRoom);
         for (Room r : rooms) {
-            //if (!r.getBusies().isEmpty()){
                 for (Busy b : r.getBusies()) {
                     if (dateFrom.compareTo(b.getDateFrom()) == 0 && dateFrom.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateTo()) == 0 && dateTo.compareTo(b.getDateFrom()) == 0 &&
                             dateFrom.compareTo(b.getDateFrom()) < 0 && dateFrom.compareTo(b.getDateTo()) > 0 && dateTo.compareTo(b.getDateFrom()) < 0 && dateTo.compareTo(b.getDateTo()) > 0) {
                         rooms.remove(r);
                     }
                 }
-            //}
         }
 
         httpSession.setAttribute("rooms",rooms);
@@ -62,9 +60,12 @@ public class ReservationController {
 
     @RequestMapping(value = "/reservation/{numberOfRoom}")
     public String reservation(@PathVariable int numberOfRoom,HttpSession httpSession){
+        Guest guest = (Guest) httpSession.getAttribute("guest");
+        if (guest==null){
+            return "redirect:login";
+        }
         Room room = roomRepository.findFirstByNumberOfRoom(numberOfRoom);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
-        Guest guest = guestRepository.findFirstByOnline(true);
 
 
         Busy busy = new Busy();
@@ -90,7 +91,11 @@ public class ReservationController {
         guests.add(guest);
         reservation.setGuest(guests);
         reservation.setRoom(room);
-
+        List<Reservation> reservationList = guest.getReservation();
+        if(reservationList == null){
+            reservationList = new ArrayList<>();
+        }
+        reservationList.add(reservation);
         httpSession.setAttribute("reservation",reservation);
         httpSession.setAttribute("busy",busy);
         httpSession.setAttribute("room",room);
@@ -115,6 +120,19 @@ public class ReservationController {
         return "redirect:/";
     }
 
+
+    @GetMapping("/myReservations")
+    public String myReservations(HttpSession httpSession){
+        Guest guest = (Guest) httpSession.getAttribute("guest");
+        if (guest==null){
+            return "redirect:/login";
+        }
+        System.out.println(guest.toString());
+        List<Reservation> myReservations = guest.getReservation();
+        httpSession.setAttribute("myReservations",myReservations);
+        System.out.println(myReservations.size());
+        return "myReservations";
+    }
 }
 
 

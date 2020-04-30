@@ -17,14 +17,20 @@
             <li class="nav-item active">
                 <a href="/">Strona glowna</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="/rooms">Pokoj i Apartamenty</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="/">Lokalizacja</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="/register">Rejestracja</a>
+            </li>
+            <li class="nav-item active">
+                <a href="/login">Login</a>
+            </li>
+            <li class="nav-item active">
+                <a   href="/myReservations">My Reservations</a>
             </li>
         </ul>
     </nav>

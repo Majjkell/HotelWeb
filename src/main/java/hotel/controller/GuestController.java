@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class GuestController {
@@ -37,6 +35,18 @@ public class GuestController {
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public String saveregister(Guest guest) {
         guestRepository.save(guest);
+        return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public String loginin(HttpSession httpSession, @RequestParam String firstName,@RequestParam String password){
+        Guest guest = guestRepository.findFirstByFirstNameAndPassword(firstName,password);
+        httpSession.setAttribute("guest",guest);
         return "redirect:/";
     }
 }

@@ -43,6 +43,6 @@
 <%--        <p class="price_t">Cena Pokoju Od: <c:out value="${rt.price}"/></p>--%>
 <%--        </section>--%>
 <%--    </c:forEach>--%>
-<%@ include file="pokoje_dostepne.jsp" %>
+<%@ include file="roomsAvailable.jsp" %>
 </body>
 </html>

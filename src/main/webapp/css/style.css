@@ -10,7 +10,7 @@ a{
     color: red;
 }
 button{
-    cursor: default;
+    cursor: default !important;
 
 }
 .form{
@@ -25,4 +25,8 @@ button{
 .table {
     width: 80vw;
     margin-left: 10vw;
+}
+.navbar{
+    display: inline-block;
+    width: 100vw;
 }

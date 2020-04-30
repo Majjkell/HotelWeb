@@ -15,7 +15,6 @@
     <tr>
         <th colspan="2">DANE DOTYCZACE REZERWACJI</th>
     </tr>
-    <%--        <p> DANE DOTYCZACE REZERWACJI</p>--%>
     <tr>
         <th>Nr pokoju:</th>
         <td><c:out value="${reservation.room.numberOfRoom}"/></td>
@@ -45,8 +44,6 @@
             <th>Typ pokoju:</th>
             <td><c:out value="${reservation.roomType}"/></td>
         </tr>
-
-        <%--    <a href="/submit">submit</a>--%>
         <tr>
             <th colspan="2"><button type="submit" class="btn btn-primary">Submit</button></th>
         </tr>
