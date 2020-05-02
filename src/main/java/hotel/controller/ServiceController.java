@@ -1,7 +1,7 @@
-package controller;
+package hotel.controller;
 
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ReservationController {
+public class ServiceController {
 }

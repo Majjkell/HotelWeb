@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: yellow;
+    text-decoration: none;
+}
+.rp{
+    color: red;
+}
+button{
+    cursor: default !important;
+
+}
+.form{
+    width: 50vw !important;
+    height: 48vh;
+    display: inline-block;
+}
+.formlr{
+    width: 25vw;
+    display: inline-block;
+}
+.table {
+    width: 80vw;
+    margin-left: 10vw;
+}
+.navbar{
+    display: inline-block;
+    width: 100vw;
+}
