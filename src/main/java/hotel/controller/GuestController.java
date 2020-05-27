@@ -25,8 +25,7 @@ public class GuestController {
         model.addAttribute("guest", guest);
         return "register";
     }
-
-
+    
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     public String saveregister(Guest guest) {
         guestRepository.save(guest);
