@@ -1,2 +1,2 @@
 # HotelWeb
-This website was made for Hotels 
+Last project in Coderslab course
