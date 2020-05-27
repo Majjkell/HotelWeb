@@ -84,6 +84,7 @@ public class ReservationController {
         if (guest == null) {
             return "redirect:login";
         }
+
         Room room = roomRepository.findFirstByNumberOfRoom(numberOfRoom);
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
 
@@ -98,9 +99,6 @@ public class ReservationController {
         room.setBusies(busies);
 
         List<Reservation> reservations = new ArrayList<>();
-//        if(reservations==null){
-//            reservations = new ArrayList<>();
-//        }
         reservations.add(reservation);
 
         List<Guest> guests = reservation.getGuest();

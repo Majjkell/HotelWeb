@@ -35,14 +35,6 @@
 
 
 </section>
-<div class="formlr"></div>
-<%--    <c:forEach items="${rooms1}" var="rt">--%>
-<%--        <section class="s2">--%>
-<%--        <p class="num_of_ppl_t">Liczba osob: 2-4</p>--%>
-<%--        <p class="type_room_t">Typ Pokoju: <c:out value="${rt.add_info}"/></p>--%>
-<%--        <p class="price_t">Cena Pokoju Od: <c:out value="${rt.price}"/></p>--%>
-<%--        </section>--%>
-<%--    </c:forEach>--%>
 <%@ include file="roomsAvailable.jsp" %>
 </body>
 </html>

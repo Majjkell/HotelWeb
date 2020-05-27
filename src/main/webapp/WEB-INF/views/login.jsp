@@ -13,7 +13,6 @@
 <%@ include file="nav.jsp" %>
 <form action="/login" method="POST">
     <div class="form-group">
-<%--        <label >First Name</label>--%>
         <button type="label"   class="btn btn-success">First Name:</button>
         <input class="form-control" placeholder="First Name" name="firstName"/>
     </div>

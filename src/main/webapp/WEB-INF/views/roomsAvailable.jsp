@@ -13,7 +13,6 @@
 </head>
 <body>
 <c:forEach items="${rooms}" var="r">
-    <%--        <section>--%>
     <table class="table table-bordered">
         <tr class="bg-dark">
             <th class="bg-success">Number Of People:</th>
@@ -46,7 +45,6 @@
         <tr class="bg-dark">
             <th class="bg-success" colspan="2" ><a href="/reservation/${r.numberOfRoom}" class="rp">Reserv</a></th>
     </table>
-    <%--        </section>--%>
 </c:forEach>
 </body>
 </html>
