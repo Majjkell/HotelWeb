@@ -13,8 +13,7 @@
     <%@ include file="nav.jsp" %>
 </head>
 <body>
-<%--<div class="formlr">1</div>--%>
-<%--<div class="form">--%>
+<section class="form">
     <form:form modelAttribute="guest" action="/submit" method="POST">
         <form:hidden path="id"/>
         <div class="form-group">
@@ -52,7 +51,6 @@
         <button type="submit" class="btn btn-danger">Submit</button>
         </div>
     </form:form>
-<%--</div>--%>
-<%--<div class="formlr">1</div>--%>
+</section>
 </body>
 </html>

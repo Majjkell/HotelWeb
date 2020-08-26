@@ -11,6 +11,7 @@
 </head>
 <body>
 <%@ include file="nav.jsp" %>
+<section class="form">
 <form action="/login" method="POST">
     <div class="form-group">
 <%--        <label >First Name</label>--%>
@@ -25,6 +26,6 @@
         <button type="submit" class="btn btn-danger">Submit</button>
     </div>
 </form>
-
+</section>
 </body>
 </html>

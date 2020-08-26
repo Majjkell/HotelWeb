@@ -2,25 +2,30 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: #fff;
+    background-image: url(../images/background-992850_1280.png);
+}
 a{
-    color: yellow;
+    color: gold;
     text-decoration: none;
+    font-size: 20px;
 }
 .rp{
     color: red;
 }
+p{
+    color: gold;
+}
 button{
-    cursor: default !important;
+    cursor: default;
 
 }
 .form{
-    width: 50vw !important;
+    width: 50vw;
     height: 48vh;
     display: inline-block;
-}
-.formlr{
-    width: 25vw;
-    display: inline-block;
+    margin-left: 25vw;
 }
 .table {
     width: 80vw;
@@ -28,5 +33,13 @@ button{
 }
 .navbar{
     display: inline-block;
+
     width: 100vw;
 }
+.nav{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+

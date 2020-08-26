@@ -12,25 +12,25 @@
 </head>
 <body>
 <section>
-    <nav class="navbar navbar-dark bg-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
+    <nav class="">
+        <ul class="nav">
+            <li class="">
                 <a href="/">Strona glowna</a>
             </li>
-            <li class="nav-item active">
+            <li class="">
                 <a href="/rooms">Pokoj i Apartamenty</a>
             </li>
-            <li class="nav-item active">
+            <li class="">
                 <a href="/">Lokalizacja</a>
             </li>
-            <li class="nav-item active">
+            <li class="">
                 <a href="/register">Rejestracja</a>
             </li>
-            <li class="nav-item active">
-                <a href="/login">Login</a>
+            <li class="">
+                <a href="/login">Logowanie</a>
             </li>
-            <li class="nav-item active">
-                <a   href="/myReservations">My Reservations</a>
+            <li class="">
+                <a   href="/myReservations">Moje Rezerwacje</a>
             </li>
         </ul>
     </nav>
