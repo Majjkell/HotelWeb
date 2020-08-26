@@ -13,7 +13,10 @@
     <%@ include file="nav.jsp" %>
 </head>
 <body>
+<<<<<<< HEAD
 <section class="form">
+=======
+>>>>>>> cf2f8b7e17a87aa870fc46e39b8d4ee99e92fde2
     <form:form modelAttribute="guest" action="/submit" method="POST">
         <form:hidden path="id"/>
         <div class="form-group">
@@ -51,6 +54,9 @@
         <button type="submit" class="btn btn-danger">Submit</button>
         </div>
     </form:form>
+<<<<<<< HEAD
 </section>
+=======
+>>>>>>> cf2f8b7e17a87aa870fc46e39b8d4ee99e92fde2
 </body>
 </html>
