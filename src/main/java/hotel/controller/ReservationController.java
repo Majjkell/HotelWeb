@@ -35,19 +35,28 @@ public class ReservationController {
 
     @RequestMapping("/roomChoose")
     public String roomChoose(Reservation reservation, HttpSession httpSession) {
+        // EN| Check if user is logged in if not redirect to the logging page
+        // PL| Sprawdza czy użytkownik jest zalogowany : przekierowuje na stronę logowania
         Guest guest = (Guest) httpSession.getAttribute("guest");
         if (guest == null) {
             return "redirect:login";
         }
-        httpSession.removeAttribute("rooms");
+
+        /*httpSession.removeAttribute("rooms");
         List<Room> roomList1 = (List<Room>) httpSession.getAttribute("rooms1");
         if (roomList1 != null) {
             httpSession.removeAttribute("rooms1");
-        }
+        }*/
+
+        // EN| Retrieving information from form about reservation
+        // PL| Pobiera informacje z formularza dotyczące rezerwacji
         int numOfPpl = reservation.getNumOfPpl();
         Date dateFrom = reservation.getDateFrom();
         Date dateTo = reservation.getDateTo();
         String typeRoom = reservation.getRoomType();
+
+        // EN| Getting rooms matching the given information from the database. Then it checks the availability of those rooms.
+        // PL| Pobiera z bazy danych pokoje zgadzające się z podanymi informacjami. Następnie sprawdza dostępność tych że pokoi.
         List<Room> rooms = roomRepository.findRoomsByTypeRoomAndNumOfPpl(numOfPpl, typeRoom);
         try {
             for (Room r : rooms) {
@@ -146,10 +155,10 @@ public class ReservationController {
         if (guest == null) {
             return "redirect:/login";
         }
-        System.out.println(guest.toString());
+//        System.out.println(guest.toString());
         List<Reservation> myReservations = guest.getReservation();
         httpSession.setAttribute("myReservations", myReservations);
-        System.out.println(myReservations.size());
+//        System.out.println(myReservations.size());
         return "myReservations";
     }
 }
