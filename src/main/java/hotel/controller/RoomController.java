@@ -24,6 +24,11 @@ public class RoomController {
             typelist.add("Premium");
             httpSession.setAttribute("type",typelist);
         }
+        // EN| Delete rooms *
+        // PL| Usuwa pokoje wybrane wcześniej
+        if(httpSession.getAttribute("rooms")!=null){
+            httpSession.removeAttribute("rooms");
+        }
         // EN| Create Reservation and add it to the model
         // PL| Tworzy Rezerwacje i dodaje ją do modelu
         Reservation reservation = new Reservation();

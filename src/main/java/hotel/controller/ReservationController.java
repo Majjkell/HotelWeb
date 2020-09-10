@@ -36,7 +36,7 @@ public class ReservationController {
     @RequestMapping("/roomChoose")
     public String roomChoose(Reservation reservation, HttpSession httpSession) {
         // EN| Check if user is logged in if not redirect to the logging page
-        // PL| Sprawdza czy użytkownik jest zalogowany : przekierowuje na stronę logowania
+        // PL| Sprawdza czy użytkownik jest zalogowany : ? przekierowuje na stronę logowania
         Guest guest = (Guest) httpSession.getAttribute("guest");
         if (guest == null) {
             return "redirect:login";
@@ -89,32 +89,54 @@ public class ReservationController {
 
     @RequestMapping(value = "/reservation/{numberOfRoom}")
     public String reservation(@PathVariable int numberOfRoom, HttpSession httpSession) {
+        // EN| Check if user is logged in if not redirect to the logging page
+        // PL| Sprawdza czy użytkownik jest zalogowany : ? przekierowuje na stronę logowania
         Guest guest = (Guest) httpSession.getAttribute("guest");
         if (guest == null) {
             return "redirect:login";
         }
 
+        // EN| Getting room from data base by 'number of this room' (every room has unique number)
+        // PL| Pobiera pokój po numerze (każdy pokój ma unikalny numer)
         Room room = roomRepository.findFirstByNumberOfRoom(numberOfRoom);
+
+        // EN| Retriveing from session reservation
+        // PL| Pobiera z sesji rezerwacje
         Reservation reservation = (Reservation) httpSession.getAttribute("reservation");
 
-
+        // EN| Creates new object 'Busy'
+        // PL| Tworzy nowy obiekt 'Busy'
         Busy busy = new Busy();
+
+        // EN| Getting informations from reservations and put them in 'Busy'
+        // PL| Pobiera informacje z rezerwacji i dodaje je do  'Busy'
         busy.setDateFrom(reservation.getDateFrom());
         busy.setDateTo(reservation.getDateTo());
+
+        // EN| Adds previously retrieved room to 'Busy'
+        // PL| Dodaje wcześniej pobrany pokój do 'Busy'
         busy.setRoom(room);
 
+        // EN| Getting list 'Busies' from room and adds another 'Busy'
+        // PL| Pobiera listę 'Busies' pokoju i dodaje do niej nowo utworzony 'Busy'
         List<Busy> busies = room.getBusies();
         busies.add(busy);
         room.setBusies(busies);
 
+        // EN| Creates list of reservations and adds reservation to the list
+        // PL| Tworzy listę rezerwacji i dodaje do nich stworzoną rezerwacje
         List<Reservation> reservations = new ArrayList<>();
         reservations.add(reservation);
 
+        // EN| Getting lists of guests from reserwation if not exist creates it
+        // PL| Pobiera listę gości z rezerwacji a jak nie ma to tworzy
         List<Guest> guests = reservation.getGuest();
         if (guests == null) {
             guests = new ArrayList<>();
         }
 
+        // EN|
+        // PL|
         guests.add(guest);
         reservation.setGuest(guests);
         reservation.setRoom(room);
@@ -123,6 +145,9 @@ public class ReservationController {
             reservationList = new ArrayList<>();
         }
         reservationList.add(reservation);
+
+        // EN| Set session attributes
+        // PL| Ustawia atrybuty do sesji
         httpSession.setAttribute("reservation", reservation);
         httpSession.setAttribute("busy", busy);
         httpSession.setAttribute("room", room);
@@ -155,10 +180,8 @@ public class ReservationController {
         if (guest == null) {
             return "redirect:/login";
         }
-//        System.out.println(guest.toString());
         List<Reservation> myReservations = guest.getReservation();
         httpSession.setAttribute("myReservations", myReservations);
-//        System.out.println(myReservations.size());
         return "myReservations";
     }
 }
